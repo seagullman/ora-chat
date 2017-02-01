@@ -11,15 +11,9 @@ import UIKit
 class LoginView: UIView {
 
     @IBOutlet fileprivate weak var emailTextField: UITextField!
-    
     @IBOutlet fileprivate weak var passwordTextField: UITextField!
     
     @IBAction func login() {
         
-    }
-    
-    @IBAction func signUp() {
-        
-    }
-    
+    }    
 }
