@@ -8,7 +8,22 @@
 
 import UIKit
 
-class LoginController: UIViewController {
+protocol LoginDelegate {
+    func login(email: String, password: String)
+}
 
-    @IBOutlet fileprivate var loginView: LoginView!
+class LoginController: UIViewController,
+                       LoginDelegate {
+
+    @IBOutlet fileprivate var loginView: LoginView! {
+        didSet {
+            self.loginView.delegate = self
+        }
+    }
+    
+    func login(email: String, password: String) {
+        //TODO: call service layer to log user in
+        //send a closure to be called upon service call success or failure
+        print("Log user in with data: \(email),\(password)")
+    }
 }

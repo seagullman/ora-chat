@@ -28,7 +28,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jPv-ru-4MS">
                                 <rect key="frame" x="16" y="149" width="343" height="50"/>
@@ -37,7 +37,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdc-ZG-IKC">
                                 <rect key="frame" x="16" y="209" width="343" height="50"/>
@@ -94,12 +94,12 @@
         <!--Registration-->
         <scene sceneID="fe9-cr-lMZ">
             <objects>
-                <viewController id="oUr-JZ-krJ" sceneMemberID="viewController">
+                <viewController id="oUr-JZ-krJ" customClass="RegistrationController" customModule="Ora_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WJm-4N-cgb"/>
                         <viewControllerLayoutGuide type="bottom" id="zsu-3k-WA3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kcl-OK-Hbt">
+                    <view key="view" contentMode="scaleToFill" id="kcl-OK-Hbt" customClass="RegistrationView" customModule="Ora_Chat" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -110,7 +110,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-9T-mZo">
                                 <rect key="frame" x="16" y="149" width="343" height="50"/>
@@ -119,7 +119,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P3o-2a-Llf">
                                 <rect key="frame" x="16" y="209" width="343" height="50"/>
@@ -128,7 +128,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Lk-ql-6sf">
                                 <rect key="frame" x="16" y="269" width="343" height="50"/>
@@ -137,7 +137,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2o-VY-hTR">
                                 <rect key="frame" x="16" y="329" width="343" height="50"/>
@@ -146,6 +146,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="register" destination="kcl-OK-Hbt" eventType="touchUpInside" id="pPQ-7S-aps"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -166,8 +169,17 @@
                             <constraint firstItem="8Lk-ql-6sf" firstAttribute="top" secondItem="P3o-2a-Llf" secondAttribute="bottom" constant="10" id="k9U-It-Qx1"/>
                             <constraint firstItem="Ica-9T-mZo" firstAttribute="top" secondItem="dOL-K0-qQh" secondAttribute="bottom" constant="10" id="tLg-Ss-rnP"/>
                         </constraints>
+                        <connections>
+                            <outlet property="confirmPasswordTextField" destination="8Lk-ql-6sf" id="pw1-YP-x8y"/>
+                            <outlet property="emailTextField" destination="Ica-9T-mZo" id="2bn-CO-UHm"/>
+                            <outlet property="nameTextField" destination="dOL-K0-qQh" id="BZf-0k-2oQ"/>
+                            <outlet property="passwordTextField" destination="P3o-2a-Llf" id="zaa-9Z-Cu4"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Registration" id="CC3-0h-NJJ"/>
+                    <connections>
+                        <outlet property="registrationView" destination="kcl-OK-Hbt" id="RkN-fT-l06"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FA-ga-g5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

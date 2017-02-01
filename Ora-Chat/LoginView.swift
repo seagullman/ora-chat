@@ -13,7 +13,12 @@ class LoginView: UIView {
     @IBOutlet fileprivate weak var emailTextField: UITextField!
     @IBOutlet fileprivate weak var passwordTextField: UITextField!
     
+    var delegate: LoginDelegate?
+    
     @IBAction func login() {
+        let email = self.emailTextField.text ?? ""
+        let password = self.passwordTextField.text ?? ""
         
+        self.delegate?.login(email: email, password: password)
     }    
 }
