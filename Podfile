@@ -6,5 +6,6 @@ target 'Ora-Chat' do
   use_frameworks!
 
   # Pods for Ora-Chat
+  pod 'Alamofire'
 
 end
