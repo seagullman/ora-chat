@@ -23,6 +23,11 @@ class RegistrationController: UIViewController,
     
     let networkClient = NetworkClient()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardOnTap()
+    }
+    
     func register(name: String, email: String, password: String) {
         networkClient.registerUser(name: name, email: email, password: password) { (response) in
             if response?.result.isSuccess == true {

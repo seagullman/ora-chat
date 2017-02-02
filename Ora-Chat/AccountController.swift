@@ -26,6 +26,8 @@ class AccountController: UIViewController,
     let networkClient = NetworkClient()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardOnTap()
         _ = networkClient.currentUser { (user) in
             self.accountView.displayViewModel(viewModel: AccountViewModel(user: user))
         }

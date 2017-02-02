@@ -23,6 +23,11 @@ class LoginController: UIViewController,
     
     let networkClient = NetworkClient()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardOnTap()
+    }
+    
     func login(email: String, password: String) {
         self.networkClient.login(email: email, password: password) { (response) in
             if response?.result.isSuccess == true {

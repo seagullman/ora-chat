@@ -224,7 +224,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="OgK-Xo-fMT">
-                        <barButtonItem key="rightBarButtonItem" title="Profile" id="s5V-jj-Aj6">
+                        <barButtonItem key="rightBarButtonItem" image="account" id="s5V-jj-Aj6">
                             <connections>
                                 <segue destination="9l8-G2-rz9" kind="show" identifier="accountSegue" id="6MO-fl-znm"/>
                             </connections>
@@ -274,7 +274,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Logout">
-                                    <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logout" destination="zjw-Af-J3o" eventType="touchUpInside" id="ijE-py-OUq"/>
@@ -369,4 +369,7 @@
             <point key="canvasLocation" x="1632.8" y="-700.29985007496259"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="account" width="25" height="25"/>
+    </resources>
 </document>
