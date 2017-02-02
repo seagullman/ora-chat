@@ -180,7 +180,6 @@
                     <navigationItem key="navigationItem" title="Registration" id="CC3-0h-NJJ"/>
                     <connections>
                         <outlet property="registrationView" destination="kcl-OK-Hbt" id="RkN-fT-l06"/>
-                        <segue destination="cHF-HE-lp7" kind="show" identifier="landingSegue" id="qdh-p8-oaE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FA-ga-g5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -216,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgh-Jv-xj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2573.5999999999999" y="35.532233883058474"/>
+            <point key="canvasLocation" x="830" y="-684"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HUg-ll-s5c">
@@ -230,6 +229,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HRV-yk-Ujv"/>
+                        <segue destination="cHF-HE-lp7" kind="show" identifier="landingSegue" id="VOR-Qr-QBW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Vd-KR-sVY" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -26,7 +26,8 @@ class LoginController: UIViewController,
     func login(email: String, password: String) {
         self.networkClient.login(email: email, password: password) { (response) in
             if response?.result.isSuccess == true {
-                //TODO: segue to landing screen
+                self.navigationController?.performSegue(withIdentifier: "landingSegue",
+                                                        sender: self)
             }
         }
     }
