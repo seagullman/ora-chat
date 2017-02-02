@@ -38,7 +38,7 @@ class NetworkClient: NetworkInterface {
     func login(email: String,
                password: String,
                completion: @escaping (DataResponse<Any>?) -> Void) {
-        //let token = response.response?.allHeaderFields["Authorization"]
+        
         let url = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/login"
         
         let params = [
@@ -47,6 +47,8 @@ class NetworkClient: NetworkInterface {
         ]
         
         self.post(url: url, params: params, completion: { (response) in
+            //TODO: add authorization token to keychain here
+            //let token = response.response?.allHeaderFields["Authorization"]
             completion(response)
         }, headers: nil)
     }

@@ -21,9 +21,13 @@ class LoginController: UIViewController,
         }
     }
     
+    let networkClient = NetworkClient()
+    
     func login(email: String, password: String) {
-        //TODO: call service layer to log user in
-        //send a closure to be called upon service call success or failure
-        print("Log user in with data: \(email),\(password)")
+        self.networkClient.login(email: email, password: password) { (response) in
+            if response?.result.isSuccess == true {
+                //TODO: segue to landing screen
+            }
+        }
     }
 }
