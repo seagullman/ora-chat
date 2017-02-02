@@ -194,28 +194,46 @@
                         <viewControllerLayoutGuide type="top" id="cef-D3-eLf"/>
                         <viewControllerLayoutGuide type="bottom" id="xbW-3V-5K0"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="F21-Xz-OHV">
+                    <view key="view" contentMode="scaleToFill" id="F21-Xz-OHV" customClass="LandingView" customModule="Ora_Chat" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueg-Zg-Use">
-                                <rect key="frame" x="164" y="318" width="47" height="30"/>
-                                <state key="normal" title="POP IT"/>
+                                <rect key="frame" x="124" y="318" width="128" height="30"/>
+                                <state key="normal" title="LANDING SCREEN"/>
                                 <connections>
                                     <action selector="popIt" destination="cHF-HE-lp7" eventType="touchUpInside" id="lPt-ID-6PU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZN-tp-Uye">
+                                <rect key="frame" x="0.0" y="356" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ueg-Zg-Use" firstAttribute="centerX" secondItem="F21-Xz-OHV" secondAttribute="centerX" id="AuO-XW-mSo"/>
                             <constraint firstItem="ueg-Zg-Use" firstAttribute="centerY" secondItem="F21-Xz-OHV" secondAttribute="centerY" id="F8S-nD-DVE"/>
+                            <constraint firstItem="fZN-tp-Uye" firstAttribute="leading" secondItem="F21-Xz-OHV" secondAttribute="leading" id="leH-9A-w7A"/>
+                            <constraint firstItem="fZN-tp-Uye" firstAttribute="top" secondItem="ueg-Zg-Use" secondAttribute="bottom" constant="8" id="ngM-qb-KPG"/>
                         </constraints>
+                        <connections>
+                            <outlet property="testLabel" destination="fZN-tp-Uye" id="Cjg-gW-85C"/>
+                        </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="OgK-Xo-fMT">
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="s5V-jj-Aj6">
+                            <connections>
+                                <segue destination="9l8-G2-rz9" kind="show" identifier="accountSegue" id="6MO-fl-znm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgh-Jv-xj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="-684"/>
+            <point key="canvasLocation" x="830" y="-700"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HUg-ll-s5c">
@@ -235,6 +253,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Vd-KR-sVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
+        </scene>
+        <!--Account Controller-->
+        <scene sceneID="v48-JK-DmL">
+            <objects>
+                <viewController id="9l8-G2-rz9" customClass="AccountController" customModule="Ora_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pfy-5s-jcn"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Ed-gM-Y6c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zjw-Af-J3o" customClass="AccountView" customModule="Ora_Chat" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE SCREEEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd1-s7-zZL">
+                                <rect key="frame" x="114" y="323" width="146" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cag-L3-gB0">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.25189732142857141" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="mKf-06-Z8E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout" destination="zjw-Af-J3o" eventType="touchUpInside" id="ijE-py-OUq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Ed-gM-Y6c" firstAttribute="top" secondItem="Cag-L3-gB0" secondAttribute="bottom" id="2gY-mJ-udx"/>
+                            <constraint firstItem="Cag-L3-gB0" firstAttribute="leading" secondItem="zjw-Af-J3o" secondAttribute="leading" id="Hlv-Sq-ojD"/>
+                            <constraint firstItem="Fd1-s7-zZL" firstAttribute="centerY" secondItem="zjw-Af-J3o" secondAttribute="centerY" id="IUY-0X-dEP"/>
+                            <constraint firstItem="Fd1-s7-zZL" firstAttribute="centerX" secondItem="zjw-Af-J3o" secondAttribute="centerX" id="u50-Fg-0EO"/>
+                            <constraint firstAttribute="trailing" secondItem="Cag-L3-gB0" secondAttribute="trailing" id="yCH-rM-GNH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accountView" destination="zjw-Af-J3o" id="kAw-M0-szG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhC-Kw-eFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1632.8" y="-700.29985007496259"/>
         </scene>
     </scenes>
 </document>
