@@ -14,6 +14,7 @@ enum ResponseError: Error {
 
 protocol NetworkInterface {
     func registerUser(name: String, email: String, password: String, completion: @escaping (ResponseError?) -> Void)
+    func login(email: String, password: String, completion: @escaping (ResponseError?) -> Void)
 }
 
 class NetworkClient: NetworkInterface {
@@ -38,15 +39,20 @@ class NetworkClient: NetworkInterface {
                           encoding: JSONEncoding.default,
                           headers: nil)
             .responseJSON { response in
-                let token = response.response?.allHeaderFields["Authorization"]
+
                 var responseError: ResponseError? = nil
+                let responseCode = response.response?.statusCode
+                print(responseCode as Any)
                 
-                if token == nil {
-                    responseError = ResponseError.failure(description: "Authorization token is nil.")
-                } 
+                if responseCode != 201 {
+                    responseError = ResponseError.failure(description: "Unable to register user")
+                }
                 
                 completion(responseError)
-                print(response.response?.allHeaderFields["Authorization"] as Any)   // result of response serialization
         }
+    }
+    
+    func login(email: String, password: String, completion: @escaping (ResponseError?) -> Void) {
+        //let token = response.response?.allHeaderFields["Authorization"]
     }
 }

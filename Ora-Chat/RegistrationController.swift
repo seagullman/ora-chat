@@ -30,6 +30,9 @@ class RegistrationController: UIViewController,
         networkClient.registerUser(name: name, email: email, password: password) { (error) in
             if error == nil {
                 print("Registration successful. Attempting to login")
+                self.networkClient.login(email: email, password: password, completion: { (error) in
+                    //TODO: segue to landing screen
+                })
             }
         }
     }
