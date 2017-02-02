@@ -21,8 +21,16 @@ class RegistrationController: UIViewController,
         }
     }
     
+    let networkClient = NetworkClient()
+    
     func register(name: String, email: String, password: String) {
         //TODO: call service layer to register user
         //pass a closure to be called upon success or failure of user creation
+        //upon successful creation, call /login (with token?)
+        networkClient.registerUser(name: name, email: email, password: password) { (error) in
+            if error == nil {
+                print("Registration successful. Attempting to login")
+            }
+        }
     }
 }

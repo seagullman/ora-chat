@@ -18,7 +18,12 @@ class RegistrationView: UIView {
     var delegate: RegistrationDelegate?
     
     @IBAction func register() {
+        //TODO: need to confirm passwords match before making call
+        let name = nameTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
         
+        self.delegate?.register(name: name, email: email, password: password)
     }
     
 }
