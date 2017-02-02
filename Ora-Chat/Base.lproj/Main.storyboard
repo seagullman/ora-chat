@@ -174,16 +174,49 @@
                             <outlet property="emailTextField" destination="Ica-9T-mZo" id="2bn-CO-UHm"/>
                             <outlet property="nameTextField" destination="dOL-K0-qQh" id="BZf-0k-2oQ"/>
                             <outlet property="passwordTextField" destination="P3o-2a-Llf" id="zaa-9Z-Cu4"/>
+                            <outlet property="registerButton" destination="M2o-VY-hTR" id="yqs-sn-Wem"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Registration" id="CC3-0h-NJJ"/>
                     <connections>
                         <outlet property="registrationView" destination="kcl-OK-Hbt" id="RkN-fT-l06"/>
+                        <segue destination="cHF-HE-lp7" kind="show" identifier="landingSegue" id="qdh-p8-oaE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FA-ga-g5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1634" y="36"/>
+        </scene>
+        <!--Landing Controller-->
+        <scene sceneID="16x-1y-oka">
+            <objects>
+                <viewController id="cHF-HE-lp7" customClass="LandingController" customModule="Ora_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cef-D3-eLf"/>
+                        <viewControllerLayoutGuide type="bottom" id="xbW-3V-5K0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F21-Xz-OHV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueg-Zg-Use">
+                                <rect key="frame" x="164" y="318" width="47" height="30"/>
+                                <state key="normal" title="POP IT"/>
+                                <connections>
+                                    <action selector="popIt" destination="cHF-HE-lp7" eventType="touchUpInside" id="lPt-ID-6PU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ueg-Zg-Use" firstAttribute="centerX" secondItem="F21-Xz-OHV" secondAttribute="centerX" id="AuO-XW-mSo"/>
+                            <constraint firstItem="ueg-Zg-Use" firstAttribute="centerY" secondItem="F21-Xz-OHV" secondAttribute="centerY" id="F8S-nD-DVE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgh-Jv-xj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2573.5999999999999" y="35.532233883058474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HUg-ll-s5c">

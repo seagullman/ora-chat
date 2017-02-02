@@ -31,7 +31,11 @@ class RegistrationController: UIViewController,
                     //TODO: segue to landing screen
                     print("LOGGING IN")
                     print(response as Any)
+                    self.performSegue(withIdentifier: "landingSegue", sender: self)
                 })
+            } else {
+                //result is failure, re-enable register button
+                self.registrationView.enableRegisterButton()
             }
         }
     }

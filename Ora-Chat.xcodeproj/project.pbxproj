@@ -13,6 +13,7 @@
 		6106537D1E42A753003D8124 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6106537C1E42A753003D8124 /* RegistrationController.swift */; };
 		6106537F1E42A75B003D8124 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6106537E1E42A75B003D8124 /* RegistrationView.swift */; };
 		610653841E42AFDF003D8124 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653831E42AFDF003D8124 /* NetworkClient.swift */; };
+		610653871E430042003D8124 /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653861E430042003D8124 /* LandingController.swift */; };
 		61B0EC691E4297FF00D745DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0EC681E4297FF00D745DF /* AppDelegate.swift */; };
 		61B0EC6E1E4297FF00D745DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61B0EC6C1E4297FF00D745DF /* Main.storyboard */; };
 		61B0EC701E4297FF00D745DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61B0EC6F1E4297FF00D745DF /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		6106537C1E42A753003D8124 /* RegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		6106537E1E42A75B003D8124 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		610653831E42AFDF003D8124 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		610653861E430042003D8124 /* LandingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
 		61B0EC651E4297FF00D745DF /* Ora-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ora-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B0EC681E4297FF00D745DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61B0EC6D1E4297FF00D745DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		610653851E430034003D8124 /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				610653861E430042003D8124 /* LandingController.swift */,
+			);
+			name = Landing;
+			sourceTree = "<group>";
+		};
 		61B0EC5C1E4297FF00D745DF = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 		61B0EC671E4297FF00D745DF /* Ora-Chat */ = {
 			isa = PBXGroup;
 			children = (
+				610653851E430034003D8124 /* Landing */,
 				610653821E42AFC2003D8124 /* Service */,
 				6106537B1E42A742003D8124 /* Registration */,
 				610653751E429CF6003D8124 /* Login */,
@@ -254,6 +265,7 @@
 				61B0EC691E4297FF00D745DF /* AppDelegate.swift in Sources */,
 				6106537F1E42A75B003D8124 /* RegistrationView.swift in Sources */,
 				610653841E42AFDF003D8124 /* NetworkClient.swift in Sources */,
+				610653871E430042003D8124 /* LandingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
