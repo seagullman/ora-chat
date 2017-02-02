@@ -27,11 +27,13 @@ class RegistrationController: UIViewController,
         //TODO: call service layer to register user
         //pass a closure to be called upon success or failure of user creation
         //upon successful creation, call /login (with token?)
-        networkClient.registerUser(name: name, email: email, password: password) { (error) in
-            if error == nil {
+        networkClient.registerUser(name: name, email: email, password: password) { (response) in
+            if response?.result.isSuccess == true {
                 print("Registration successful. Attempting to login")
-                self.networkClient.login(email: email, password: password, completion: { (error) in
+                self.networkClient.login(email: email, password: password, completion: { (response) in
                     //TODO: segue to landing screen
+                    print("LOGGING IN")
+                    print(response as Any)
                 })
             }
         }

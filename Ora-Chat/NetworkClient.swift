@@ -8,13 +8,9 @@
 
 import Alamofire
 
-enum ResponseError: Error {
-    case failure(description: String)
-}
-
 protocol NetworkInterface {
-    func registerUser(name: String, email: String, password: String, completion: @escaping (ResponseError?) -> Void)
-    func login(email: String, password: String, completion: @escaping (ResponseError?) -> Void)
+    func registerUser(name: String, email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
+    func login(email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
 }
 
 class NetworkClient: NetworkInterface {
@@ -23,7 +19,9 @@ class NetworkClient: NetworkInterface {
     func registerUser(name: String,
                       email: String,
                       password: String,
-                      completion: @escaping (ResponseError?) -> Void) {
+                      completion: @escaping (DataResponse<Any>?) -> Void) {
+        
+        let url = "https://private-93240c-oracodechallenge.apiary-mock.com/users"
         
         let params = [
             "name": name,
@@ -31,28 +29,41 @@ class NetworkClient: NetworkInterface {
             "password": password,
             "password_confirmation": password
         ]
-
-        let url = "https://private-93240c-oracodechallenge.apiary-mock.com/users"
+        
+        self.post(url: url, params: params, completion: { (response) in
+            completion(response)
+        }, headers: nil)
+    }
+    
+    func login(email: String,
+               password: String,
+               completion: @escaping (DataResponse<Any>?) -> Void) {
+        //let token = response.response?.allHeaderFields["Authorization"]
+        let url = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/login"
+        
+        let params = [
+            "email": email,
+            "password": password,
+        ]
+        
+        self.post(url: url, params: params, completion: { (response) in
+            completion(response)
+        }, headers: nil)
+    }
+    
+    private func post(url: String,
+                      params: [String: String],
+                      completion: @escaping (DataResponse<Any>?) -> Void,
+                      headers: [String: String]?) {
+        
         Alamofire.request(url,
                           method: .post,
                           parameters: params,
                           encoding: JSONEncoding.default,
-                          headers: nil)
+                          headers: headers)
             .responseJSON { response in
-
-                var responseError: ResponseError? = nil
-                let responseCode = response.response?.statusCode
-                print(responseCode as Any)
                 
-                if responseCode != 201 {
-                    responseError = ResponseError.failure(description: "Unable to register user")
-                }
-                
-                completion(responseError)
+            completion(response)
         }
-    }
-    
-    func login(email: String, password: String, completion: @escaping (ResponseError?) -> Void) {
-        //let token = response.response?.allHeaderFields["Authorization"]
     }
 }
