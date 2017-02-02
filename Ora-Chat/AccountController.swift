@@ -11,6 +11,7 @@ import SwiftKeychainWrapper
 
 protocol AccountDelegate: class {
     func logout()
+    func updateUser(name: String, email: String, password: String)
 }
 
 class AccountController: UIViewController,
@@ -30,12 +31,22 @@ class AccountController: UIViewController,
         }
     }
     
+    //MARK: AccountDelegate
     func logout() {
         self.networkClient.logout { (response) in
             if response?.result.isSuccess == true {
                 _ = self.navigationController?.popToRootViewController(animated: false)
             } else {
                 //TODO handle logout error
+            }
+        }
+    }
+    
+    func updateUser(name: String, email: String, password: String) {
+        self.networkClient.updateUser(name: name, email: email, password: password) { (response) in
+            if response?.result.isSuccess == true {
+                //TODO: show 'saved' on screen
+                print("SAVE SUCCESS!")
             }
         }
     }

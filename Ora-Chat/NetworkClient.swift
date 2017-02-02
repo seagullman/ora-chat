@@ -14,6 +14,7 @@ protocol NetworkInterface {
     func login(email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
     func logout(completion: @escaping (DataResponse<Any>?) -> Void)
     func currentUser(completion: @escaping (User) -> Void)
+    func updateUser(name: String, email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
 }
 
 class NetworkClient: NetworkInterface {
@@ -42,7 +43,7 @@ class NetworkClient: NetworkInterface {
                   params: params,
                   completion: { (response) in
             completion(response)
-        }, headers: nil)
+        }, header: nil)
     }
     
     func login(email: String,
@@ -62,18 +63,11 @@ class NetworkClient: NetworkInterface {
             _ = KeychainWrapper.standard.set(token, forKey: self.authTokenKey)
                     
             completion(response)
-        }, headers: nil)
+        }, header: nil)
     }
     
     func logout(completion: @escaping (DataResponse<Any>?) -> Void) {
-        //TODO: GET to /logout
-        let authToken: String = KeychainWrapper.standard.string(forKey: authTokenKey) ?? ""
-        
-        let headers = [
-            "Content-Type": content_type,
-            "Authorization": authToken
-        ]
-        
+
         self.get(url: logoutUrl,
                  completion: { (response) in
                     if response?.result.isSuccess == true {
@@ -81,38 +75,47 @@ class NetworkClient: NetworkInterface {
                         _ = KeychainWrapper.standard.removeObject(forKey: self.authTokenKey)
                     }
             completion(response)
-        }, headers: headers)
+        }, header: self.authHeader())
     }
     
     func currentUser(completion: @escaping (User) -> Void) {
-        
-        let authToken: String = KeychainWrapper.standard.string(forKey: authTokenKey) ?? ""
-        
-        let headers = [
-            "Content-Type": content_type,
-            "Authorization": authToken
-        ]
         
         self.get(url: currentUserUrl, completion: { (response) in
             print(response?.result.value as Any)
             let responseDictionary = response?.result.value as! [String: AnyObject] //fix force unwrap
             let user = User(dict: responseDictionary["data"] as! [String : AnyObject]) //fix force unwrap
             completion(user)
-        }, headers: headers)
+        }, header: self.authHeader())
         
     }
     
+    func updateUser(name: String, email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void) {
+        
+        //TODO: allow them to only update a one field?
+        let params = [
+            "name": name,
+            "email": email,
+            "password": password,
+            "password_confirmation": password
+        ]
+        
+        self.patch(url: self.currentUserUrl, params: params, completion: { (response) in
+            completion(response)
+        }, header: self.authHeader())
+    }
+    
+    //TODO: refactor this into a single 'request' function?
     //MARK: Private functions
     private func post(url: String,
                       params: [String: String],
                       completion: @escaping (DataResponse<Any>?) -> Void,
-                      headers: [String: String]?) {
+                      header: [String: String]?) {
         
         Alamofire.request(url,
                           method: .post,
                           parameters: params,
                           encoding: JSONEncoding.default,
-                          headers: headers)
+                          headers: header)
             .responseJSON { response in
                 
             completion(response)
@@ -121,16 +124,41 @@ class NetworkClient: NetworkInterface {
     
     private func get(url: String,
                       completion: @escaping (DataResponse<Any>?) -> Void,
-                      headers: [String: String]?) {
+                      header: [String: String]?) {
         
         Alamofire.request(url,
                           method: .get,
                           encoding: JSONEncoding.default,
-                          headers: headers)
+                          headers: header)
             .responseJSON { response in
                 
                 completion(response)
         }
     }
-
+    
+    private func patch(url: String,
+                      params: [String: String],
+                      completion: @escaping (DataResponse<Any>?) -> Void,
+                      header: [String: String]?) {
+        
+        Alamofire.request(url,
+                          method: .patch,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: header)
+            .responseJSON { response in
+                
+                completion(response)
+        }
+    }
+    
+    private func authHeader() -> [String: String] {
+        let authToken: String = KeychainWrapper.standard.string(forKey: authTokenKey) ?? ""
+        
+        let header = [
+            "Content-Type": content_type,
+            "Authorization": authToken
+        ]
+        return header
+    }
 }

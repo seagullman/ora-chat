@@ -22,6 +22,16 @@ class AccountView: UIView {
         self.emailTextField.text = viewModel.email
     }
     
+    @IBAction func updateUser() {
+        //TODO validate so fields cannot be empty, then force unwrap
+        let name = self.nameTextField.text ?? ""
+        let email = self.emailTextField.text ?? ""
+        let password = self.passwordTextField.text ?? ""
+        
+        self.delegate?.updateUser(name: name, email: email, password: password)
+    }
+    
+    
     @IBAction func logout() {
         self.delegate?.logout()
     }

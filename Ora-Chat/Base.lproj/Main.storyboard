@@ -267,14 +267,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cag-L3-gB0">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <color key="backgroundColor" red="1" green="0.25189732142857141" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="591" width="343" height="60"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="mKf-06-Z8E"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Logout">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logout" destination="zjw-Af-J3o" eventType="touchUpInside" id="ijE-py-OUq"/>
@@ -316,24 +316,41 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcP-dA-rlj">
+                                <rect key="frame" x="16" y="521" width="343" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.25189732139999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Fmf-d3-6Fl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateUser" destination="zjw-Af-J3o" eventType="touchUpInside" id="Y72-Tn-OJK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6Ed-gM-Y6c" firstAttribute="top" secondItem="Cag-L3-gB0" secondAttribute="bottom" id="2gY-mJ-udx"/>
-                            <constraint firstItem="Cag-L3-gB0" firstAttribute="leading" secondItem="zjw-Af-J3o" secondAttribute="leading" id="Hlv-Sq-ojD"/>
+                            <constraint firstItem="6Ed-gM-Y6c" firstAttribute="top" secondItem="Cag-L3-gB0" secondAttribute="bottom" constant="16" id="2gY-mJ-udx"/>
+                            <constraint firstItem="Cag-L3-gB0" firstAttribute="trailing" secondItem="RcP-dA-rlj" secondAttribute="trailing" id="AAk-Iz-kWP"/>
+                            <constraint firstItem="RcP-dA-rlj" firstAttribute="leading" secondItem="zjw-Af-J3o" secondAttribute="leading" constant="16" id="LEF-24-dID"/>
                             <constraint firstItem="VNq-vd-Whx" firstAttribute="leading" secondItem="zjw-Af-J3o" secondAttribute="leading" constant="16" id="Lrx-vf-Iab"/>
                             <constraint firstItem="BdL-di-RWN" firstAttribute="leading" secondItem="VNq-vd-Whx" secondAttribute="leading" id="Ql3-Po-ZeJ"/>
                             <constraint firstItem="HSN-Da-Jtt" firstAttribute="top" secondItem="BdL-di-RWN" secondAttribute="bottom" constant="10" id="Ti9-Wp-ezL"/>
                             <constraint firstItem="HSN-Da-Jtt" firstAttribute="leading" secondItem="BdL-di-RWN" secondAttribute="leading" id="Xuy-pU-cX5"/>
                             <constraint firstItem="BdL-di-RWN" firstAttribute="top" secondItem="VNq-vd-Whx" secondAttribute="bottom" constant="10" id="aMa-7V-YY5"/>
                             <constraint firstItem="gWi-WZ-xz3" firstAttribute="top" secondItem="HSN-Da-Jtt" secondAttribute="bottom" constant="10" id="bP4-on-pvh"/>
+                            <constraint firstItem="Cag-L3-gB0" firstAttribute="leading" secondItem="RcP-dA-rlj" secondAttribute="leading" id="cdf-hZ-19K"/>
                             <constraint firstAttribute="trailing" secondItem="VNq-vd-Whx" secondAttribute="trailing" constant="16" id="lH3-4X-T0h"/>
                             <constraint firstItem="gWi-WZ-xz3" firstAttribute="leading" secondItem="HSN-Da-Jtt" secondAttribute="leading" id="oYB-ta-3NN"/>
+                            <constraint firstAttribute="trailing" secondItem="RcP-dA-rlj" secondAttribute="trailing" constant="16" id="sVe-6r-rOa"/>
                             <constraint firstItem="HSN-Da-Jtt" firstAttribute="trailing" secondItem="BdL-di-RWN" secondAttribute="trailing" id="tiA-gH-AvW"/>
                             <constraint firstItem="VNq-vd-Whx" firstAttribute="top" secondItem="pfy-5s-jcn" secondAttribute="bottom" constant="25" id="wz8-xO-Lau"/>
-                            <constraint firstAttribute="trailing" secondItem="Cag-L3-gB0" secondAttribute="trailing" id="yCH-rM-GNH"/>
                             <constraint firstItem="BdL-di-RWN" firstAttribute="trailing" secondItem="VNq-vd-Whx" secondAttribute="trailing" id="zEn-ii-JB5"/>
                             <constraint firstItem="gWi-WZ-xz3" firstAttribute="trailing" secondItem="HSN-Da-Jtt" secondAttribute="trailing" id="zVm-lb-oP1"/>
+                            <constraint firstItem="Cag-L3-gB0" firstAttribute="top" secondItem="RcP-dA-rlj" secondAttribute="bottom" constant="10" id="zg3-je-J4k"/>
                         </constraints>
                         <connections>
                             <outlet property="confirmPasswordTextField" destination="gWi-WZ-xz3" id="6mo-YR-uWh"/>
