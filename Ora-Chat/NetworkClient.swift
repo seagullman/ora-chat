@@ -13,6 +13,7 @@ protocol NetworkInterface {
     func registerUser(name: String, email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
     func login(email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
     func logout(completion: @escaping (DataResponse<Any>?) -> Void)
+    func currentUser(completion: @escaping (User) -> Void)
 }
 
 class NetworkClient: NetworkInterface {
@@ -20,8 +21,10 @@ class NetworkClient: NetworkInterface {
     fileprivate let registerUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/users"
     fileprivate let loginUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/login"
     fileprivate let logoutUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/logout"
+    fileprivate let currentUserUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/users/current"
     
     fileprivate let authTokenKey = "auth-token"
+    fileprivate let content_type = "application/json; charset=UTF-8"
 
     func registerUser(name: String,
                       email: String,
@@ -67,7 +70,7 @@ class NetworkClient: NetworkInterface {
         let authToken: String = KeychainWrapper.standard.string(forKey: authTokenKey) ?? ""
         
         let headers = [
-            "Content-Type": "application/json; charset=UTF-8",
+            "Content-Type": content_type,
             "Authorization": authToken
         ]
         
@@ -79,6 +82,24 @@ class NetworkClient: NetworkInterface {
                     }
             completion(response)
         }, headers: headers)
+    }
+    
+    func currentUser(completion: @escaping (User) -> Void) {
+        
+        let authToken: String = KeychainWrapper.standard.string(forKey: authTokenKey) ?? ""
+        
+        let headers = [
+            "Content-Type": content_type,
+            "Authorization": authToken
+        ]
+        
+        self.get(url: currentUserUrl, completion: { (response) in
+            print(response?.result.value as Any)
+            let responseDictionary = response?.result.value as! [String: AnyObject] //fix force unwrap
+            let user = User(dict: responseDictionary["data"] as! [String : AnyObject]) //fix force unwrap
+            completion(user)
+        }, headers: headers)
+        
     }
     
     //MARK: Private functions

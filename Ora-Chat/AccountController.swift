@@ -24,6 +24,12 @@ class AccountController: UIViewController,
     
     let networkClient = NetworkClient()
     
+    override func viewDidLoad() {
+        _ = networkClient.currentUser { (user) in
+            self.accountView.displayViewModel(viewModel: AccountViewModel(user: user))
+        }
+    }
+    
     func logout() {
         self.networkClient.logout { (response) in
             if response?.result.isSuccess == true {
