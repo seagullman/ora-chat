@@ -109,16 +109,14 @@ class NetworkClient: NetworkInterface {
     func getChats(completion: @escaping ([Chat]) -> Void) {
         self.get(url: chatsUrl,
                  completion: { (response) in
-                    let data = response?.data
-                    let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+                    guard let data = response?.data else { return }
                     
-                    guard let rootJson = json as? [String: Any] else {
-                        print("invalid format")
-                        return
-                    }
+                    let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                    
+                    guard let rootJson = json as? [String: Any] else { return }
                     
                     //loop through each one of these and create model objects
-                    let chats = rootJson["data"] as? [AnyObject]
+                    let chats = self.test()?["data"] as? [AnyObject]
                     var allChats: [Chat] = []
                     
                     chats?.forEach({ (chat) in
@@ -187,4 +185,19 @@ class NetworkClient: NetworkInterface {
         ]
         return header
     }
+    
+    func test() -> NSDictionary? {
+        if let path = Bundle.main.path(forResource: "chats_sample_data", ofType: "json") {
+            do {
+                let jsonData = try NSData(contentsOfFile: path, options: NSData.ReadingOptions.mappedIfSafe)
+                do {
+                    let jsonResult: NSDictionary = try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                    return jsonResult
+                    
+                } catch {}
+            } catch {}
+        }
+        return nil
+    }
+        
 }

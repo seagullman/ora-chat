@@ -15,8 +15,8 @@ class ChatsTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var lastMessageLabel: UILabel!
     
     func displayViewModel(viewModel: ChatsTableViewCellViewModel) {
-    
+        self.chatByLabel.text = viewModel.chatTitle
+        self.lastMessageByLabel.text = viewModel.senderText
+        self.lastMessageLabel.text = viewModel.lastMessageText
     }
-    
-    
 }

@@ -8,7 +8,14 @@
 
 import UIKit
 
-class LandingController: UIViewController {
+protocol LandingDelegate: class {
+    func didSelectChat(chatId: Int)
+}
+
+class LandingController: UIViewController,
+                         LandingDelegate {
+    
+    @IBOutlet fileprivate var landingView: LandingView!
     
     fileprivate let networkClient = NetworkClient()
     
@@ -19,30 +26,15 @@ class LandingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardOnTap()
+        self.landingView.delegate = self
+        
         networkClient.getChats { (chats) in
-            print("LandingController chats response: \(chats.count)")
-            print(chats[0].name)
-            
+            print("LandingController chats response count: \(chats.count)")
+            self.landingView.displayViewModel(viewModel: LandingViewModel(chats: chats))
         }
     }
-    //TODO: remove this. This is what will be called upon successful logout
-    @IBAction func popIt() {
-        _ = self.navigationController?.popToRootViewController(animated: false)
+    
+    func didSelectChat(chatId: Int) {
+        self.performSegue(withIdentifier: "chatDetailSegue", sender: self)
     }
 }
-
-//extension LandingController: UITableViewDelegate {
-//
-//}
-//
-//extension LandingController: UITableViewDataSource {
-//    
-//    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
-//    }
-//
-//    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        
-//    }
-//}
