@@ -198,30 +198,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueg-Zg-Use">
-                                <rect key="frame" x="124" y="318" width="128" height="30"/>
-                                <state key="normal" title="LANDING SCREEN"/>
-                                <connections>
-                                    <action selector="popIt" destination="cHF-HE-lp7" eventType="touchUpInside" id="lPt-ID-6PU"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZN-tp-Uye">
-                                <rect key="frame" x="0.0" y="356" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WTT-Ad-ZCQ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nFp-3j-29C" customClass="ChatsTableViewCell" customModule="Ora_Chat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nFp-3j-29C" id="VeJ-1G-nCV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat by Brad Siegel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ao-4d-eOu">
+                                                    <rect key="frame" x="8" y="0.0" width="124" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jordan - 23 mins ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyI-5t-nFM">
+                                                    <rect key="frame" x="18" y="16" width="94" height="11"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey what's up dude?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4G-lO-fFN">
+                                                    <rect key="frame" x="18" y="27" width="341" height="10"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                    <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0Ao-4d-eOu" firstAttribute="leading" secondItem="VeJ-1G-nCV" secondAttribute="leading" constant="8" id="J7o-YG-gxI"/>
+                                                <constraint firstItem="x4G-lO-fFN" firstAttribute="leading" secondItem="fyI-5t-nFM" secondAttribute="leading" id="L84-yB-X1m"/>
+                                                <constraint firstItem="fyI-5t-nFM" firstAttribute="top" secondItem="0Ao-4d-eOu" secondAttribute="bottom" id="VQD-pi-ZCt"/>
+                                                <constraint firstItem="x4G-lO-fFN" firstAttribute="top" secondItem="fyI-5t-nFM" secondAttribute="bottom" id="iFb-5Y-xRa"/>
+                                                <constraint firstItem="fyI-5t-nFM" firstAttribute="leading" secondItem="0Ao-4d-eOu" secondAttribute="leading" constant="10" id="ldh-Di-bIM"/>
+                                                <constraint firstAttribute="trailing" secondItem="x4G-lO-fFN" secondAttribute="trailing" constant="16" id="pUk-9a-XHu"/>
+                                                <constraint firstItem="0Ao-4d-eOu" firstAttribute="top" secondItem="VeJ-1G-nCV" secondAttribute="top" id="rUt-iG-YdB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatByLabel" destination="0Ao-4d-eOu" id="1i7-fZ-XIQ"/>
+                                            <outlet property="lastMessageByLabel" destination="fyI-5t-nFM" id="5VN-dB-vOn"/>
+                                            <outlet property="lastMessageLabel" destination="x4G-lO-fFN" id="fxP-8F-iCY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ueg-Zg-Use" firstAttribute="centerX" secondItem="F21-Xz-OHV" secondAttribute="centerX" id="AuO-XW-mSo"/>
-                            <constraint firstItem="ueg-Zg-Use" firstAttribute="centerY" secondItem="F21-Xz-OHV" secondAttribute="centerY" id="F8S-nD-DVE"/>
-                            <constraint firstItem="fZN-tp-Uye" firstAttribute="leading" secondItem="F21-Xz-OHV" secondAttribute="leading" id="leH-9A-w7A"/>
-                            <constraint firstItem="fZN-tp-Uye" firstAttribute="top" secondItem="ueg-Zg-Use" secondAttribute="bottom" constant="8" id="ngM-qb-KPG"/>
+                            <constraint firstItem="xbW-3V-5K0" firstAttribute="top" secondItem="WTT-Ad-ZCQ" secondAttribute="bottom" id="4J9-Qr-j6j"/>
+                            <constraint firstAttribute="trailing" secondItem="WTT-Ad-ZCQ" secondAttribute="trailing" id="O5o-TR-QlU"/>
+                            <constraint firstItem="WTT-Ad-ZCQ" firstAttribute="top" secondItem="cef-D3-eLf" secondAttribute="bottom" id="WI9-Tl-12o"/>
+                            <constraint firstItem="WTT-Ad-ZCQ" firstAttribute="leading" secondItem="F21-Xz-OHV" secondAttribute="leading" id="jzg-xZ-ljP"/>
                         </constraints>
-                        <connections>
-                            <outlet property="testLabel" destination="fZN-tp-Uye" id="Cjg-gW-85C"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="OgK-Xo-fMT">
                         <barButtonItem key="rightBarButtonItem" image="account" id="s5V-jj-Aj6">
@@ -233,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgh-Jv-xj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="-700"/>
+            <point key="canvasLocation" x="829.60000000000002" y="-700.29985007496259"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HUg-ll-s5c">

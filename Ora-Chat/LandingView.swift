@@ -14,7 +14,7 @@ class LandingView: UIView {
     
     override func awakeFromNib() {
         let retrievedString: String? = KeychainWrapper.standard.string(forKey: "auth-token")
-        self.testLabel.text = retrievedString
+        //self.testLabel.text = retrievedString
     }
     
 }

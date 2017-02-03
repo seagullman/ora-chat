@@ -20,6 +20,10 @@
 		610653911E43AB16003D8124 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653901E43AB16003D8124 /* User.swift */; };
 		610653931E43AE32003D8124 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653921E43AE32003D8124 /* AccountViewModel.swift */; };
 		610653951E43C7F3003D8124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653941E43C7F3003D8124 /* Extensions.swift */; };
+		610653971E43D7EA003D8124 /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653961E43D7EA003D8124 /* ChatsTableViewCell.swift */; };
+		610653991E43DAA0003D8124 /* ChatsTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653981E43DAA0003D8124 /* ChatsTableViewCellViewModel.swift */; };
+		6106539B1E43DC73003D8124 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6106539A1E43DC73003D8124 /* Chat.swift */; };
+		6106539D1E43DCD4003D8124 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6106539C1E43DCD4003D8124 /* ChatMessage.swift */; };
 		61B0EC691E4297FF00D745DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0EC681E4297FF00D745DF /* AppDelegate.swift */; };
 		61B0EC6E1E4297FF00D745DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61B0EC6C1E4297FF00D745DF /* Main.storyboard */; };
 		61B0EC701E4297FF00D745DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61B0EC6F1E4297FF00D745DF /* Assets.xcassets */; };
@@ -40,6 +44,10 @@
 		610653901E43AB16003D8124 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		610653921E43AE32003D8124 /* AccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		610653941E43C7F3003D8124 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		610653961E43D7EA003D8124 /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCell.swift; sourceTree = "<group>"; };
+		610653981E43DAA0003D8124 /* ChatsTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		6106539A1E43DC73003D8124 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		6106539C1E43DCD4003D8124 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		61B0EC651E4297FF00D745DF /* Ora-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ora-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B0EC681E4297FF00D745DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61B0EC6D1E4297FF00D745DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +101,8 @@
 			children = (
 				610653861E430042003D8124 /* LandingController.swift */,
 				610653881E439CD9003D8124 /* LandingView.swift */,
+				610653961E43D7EA003D8124 /* ChatsTableViewCell.swift */,
+				610653981E43DAA0003D8124 /* ChatsTableViewCellViewModel.swift */,
 			);
 			name = Landing;
 			sourceTree = "<group>";
@@ -111,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				610653901E43AB16003D8124 /* User.swift */,
+				6106539A1E43DC73003D8124 /* Chat.swift */,
+				6106539C1E43DCD4003D8124 /* ChatMessage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -293,10 +305,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6106539D1E43DCD4003D8124 /* ChatMessage.swift in Sources */,
+				610653991E43DAA0003D8124 /* ChatsTableViewCellViewModel.swift in Sources */,
 				610653771E429D02003D8124 /* LoginController.swift in Sources */,
 				610653791E429D09003D8124 /* LoginView.swift in Sources */,
 				6106537D1E42A753003D8124 /* RegistrationController.swift in Sources */,
 				61B0EC691E4297FF00D745DF /* AppDelegate.swift in Sources */,
+				6106539B1E43DC73003D8124 /* Chat.swift in Sources */,
 				6106538E1E43A103003D8124 /* AccountView.swift in Sources */,
 				610653891E439CD9003D8124 /* LandingView.swift in Sources */,
 				6106537F1E42A75B003D8124 /* RegistrationView.swift in Sources */,
@@ -306,6 +321,7 @@
 				610653871E430042003D8124 /* LandingController.swift in Sources */,
 				610653931E43AE32003D8124 /* AccountViewModel.swift in Sources */,
 				610653911E43AB16003D8124 /* User.swift in Sources */,
+				610653971E43D7EA003D8124 /* ChatsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@ protocol NetworkInterface {
     func logout(completion: @escaping (DataResponse<Any>?) -> Void)
     func currentUser(completion: @escaping (User) -> Void)
     func updateUser(name: String, email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
+    func getChats(completion: @escaping ([Chat]) -> Void)
 }
 
 class NetworkClient: NetworkInterface {
@@ -23,6 +24,7 @@ class NetworkClient: NetworkInterface {
     fileprivate let loginUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/login"
     fileprivate let logoutUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/logout"
     fileprivate let currentUserUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/users/current"
+    fileprivate let chatsUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/chats?page=1&limit=50"
     
     fileprivate let authTokenKey = "auth-token"
     fileprivate let content_type = "application/json; charset=UTF-8"
@@ -104,10 +106,33 @@ class NetworkClient: NetworkInterface {
         }, header: self.authHeader())
     }
     
+    func getChats(completion: @escaping ([Chat]) -> Void) {
+        self.get(url: chatsUrl,
+                 completion: { (response) in
+                    let data = response?.data
+                    let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+                    
+                    guard let rootJson = json as? [String: Any] else {
+                        print("invalid format")
+                        return
+                    }
+                    
+                    //loop through each one of these and create model objects
+                    let chats = rootJson["data"] as? [AnyObject]
+                    var allChats: [Chat] = []
+                    
+                    chats?.forEach({ (chat) in
+                        allChats.append(Chat(dict: chat as! [String : AnyObject]))
+                    })
+                    completion(allChats)
+
+        }, header: self.authHeader())
+    }
+    
     //TODO: refactor this into a single 'request' function?
     //MARK: Private functions
     private func post(url: String,
-                      params: [String: String],
+                      params: [String: Any],
                       completion: @escaping (DataResponse<Any>?) -> Void,
                       header: [String: String]?) {
         
@@ -123,21 +148,22 @@ class NetworkClient: NetworkInterface {
     }
     
     private func get(url: String,
+                     params: [String: Any]? = nil,
                       completion: @escaping (DataResponse<Any>?) -> Void,
                       header: [String: String]?) {
         
         Alamofire.request(url,
                           method: .get,
+                          parameters: params,
                           encoding: JSONEncoding.default,
                           headers: header)
             .responseJSON { response in
-                
                 completion(response)
         }
     }
     
     private func patch(url: String,
-                      params: [String: String],
+                      params: [String: Any],
                       completion: @escaping (DataResponse<Any>?) -> Void,
                       header: [String: String]?) {
         

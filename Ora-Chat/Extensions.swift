@@ -17,3 +17,12 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+extension Date {
+    func dateFromString(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
+        return dateFormatter.date(from: dateString) ?? Date()
+    }
+}
