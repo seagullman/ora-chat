@@ -38,7 +38,7 @@ class RegistrationController: UIViewController,
                 })
             } else {
                 //result is failure, re-enable register button
-                self.registrationView.enableRegisterButton(enable: true)
+                self.registrationView.enableRegisterButton()
             }
         }
     }

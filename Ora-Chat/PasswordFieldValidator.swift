@@ -15,7 +15,7 @@ protocol PasswordFieldValidatorDelegate: class {
 class PasswordFieldValidator: NSObject,
                               UITextFieldDelegate {
     
-    var passwordField: UITextField
+    let passwordField: UITextField
     let confirmationTextField: UITextField
     var delegate: PasswordFieldValidatorDelegate
     
@@ -28,17 +28,19 @@ class PasswordFieldValidator: NSObject,
         self.delegate = delegate
         super.init()
         
-        self.passwordField.addTarget(self, action:#selector(PasswordFieldValidator.textChanged), for:UIControlEvents.editingChanged)
-        self.confirmationTextField.addTarget(self, action:#selector(PasswordFieldValidator.textChanged), for:UIControlEvents.editingChanged)
+        self.passwordField.addTarget(self,
+                                     action:#selector(PasswordFieldValidator.textChanged),
+                                     for:UIControlEvents.editingChanged)
+        self.confirmationTextField.addTarget(self,
+                                             action:#selector(PasswordFieldValidator.textChanged),
+                                             for:UIControlEvents.editingChanged)
     }
     
     func textChanged() {
         var a = false
         var b = false
         
-        if passwordField.text == confirmationTextField.text {
-            a = true
-        }
+        a = passwordField.text == confirmationTextField.text
         
         if(passwordField.text == "" || confirmationTextField.text == "") {
             delegate.passwordFieldsValidated(success: false)
@@ -51,7 +53,5 @@ class PasswordFieldValidator: NSObject,
         } else {
             self.delegate.passwordFieldsValidated(success: false)
         }
-        
-
     }
 }

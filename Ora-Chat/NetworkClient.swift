@@ -61,7 +61,7 @@ class NetworkClient: NetworkInterface {
                   params: params,
                   completion: { (response) in
             //Store auth token in Keychain 
-            let token = response?.response?.allHeaderFields["Authorization"] as? String ?? "" //TODO: fix this
+            let token = response?.response?.allHeaderFields["Authorization"] as? String ?? ""
             _ = KeychainWrapper.standard.set(token, forKey: self.authTokenKey)
                     
             completion(response)
@@ -93,7 +93,6 @@ class NetworkClient: NetworkInterface {
     
     func updateUser(name: String, email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void) {
         
-        //TODO: allow them to only update a one field?
         let params = [
             "name": name,
             "email": email,
@@ -115,8 +114,7 @@ class NetworkClient: NetworkInterface {
                     
                     guard let rootJson = json as? [String: Any] else { return }
                     
-                    //loop through each one of these and create model objects
-                    let chats = self.test()?["data"] as? [AnyObject]
+                    let chats = rootJson["data"] as? [AnyObject]
                     var allChats: [Chat] = []
                     
                     chats?.forEach({ (chat) in
@@ -186,7 +184,10 @@ class NetworkClient: NetworkInterface {
         return header
     }
     
-    func test() -> NSDictionary? {
+    /*
+     * Use for testing
+     */
+    func sampleChatsData() -> NSDictionary? {
         if let path = Bundle.main.path(forResource: "chats_sample_data", ofType: "json") {
             do {
                 let jsonData = try NSData(contentsOfFile: path, options: NSData.ReadingOptions.mappedIfSafe)

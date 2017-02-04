@@ -14,7 +14,6 @@ class AccountView: UIView {
     @IBOutlet fileprivate weak var emailTextField: UITextField!
     @IBOutlet fileprivate weak var passwordTextField: UITextField!
     @IBOutlet fileprivate weak var confirmPasswordTextField: UITextField!
-    @IBOutlet fileprivate weak var editDoneButton: UIButton!
     @IBOutlet fileprivate weak var saveButton: UIButton!
     @IBOutlet fileprivate weak var savedBanner: UIView!
     
@@ -31,30 +30,16 @@ class AccountView: UIView {
         self.update()
     }
     
-//    @IBAction func enableEditing() {
-//        self.nameTextField.isEnabled = !self.nameTextField.isEnabled
-//        self.emailTextField.isEnabled = !self.emailTextField.isEnabled
-//        self.passwordTextField.isEnabled = !self.passwordTextField.isEnabled
-//        self.confirmPasswordTextField.isEnabled = !self.confirmPasswordTextField.isEnabled
-//        let buttonText = nameTextField.isEnabled ? "done" : "edit"
-//        self.editDoneButton.setTitle(buttonText, for: .normal)
-//        if !self.nameTextField.isEnabled {
-//            self.update()
-//        }
-//    }
-    
     @IBAction func logout() {
         self.delegate?.logout()
     }
     
     private func update() {
-        //TODO validate so fields cannot be empty, then force unwrap
     let name = self.nameTextField.text ?? ""
     let email = self.emailTextField.text ?? ""
     let password = self.passwordTextField.text ?? ""
     
     self.delegate?.updateUser(name: name, email: email, password: password, completion: {
-        self.savedBanner.alpha = 1.0
         UIView.animate(withDuration: 0.2,
                        delay: 0.0,
                        options: UIViewAnimationOptions.curveEaseOut,
