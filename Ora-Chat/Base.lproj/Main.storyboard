@@ -195,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FA-ga-g5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="36"/>
+            <point key="canvasLocation" x="1817" y="36"/>
         </scene>
         <!--Chats-->
         <scene sceneID="16x-1y-oka">
@@ -466,7 +466,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhC-Kw-eFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2016.8" y="-1258.0209895052474"/>
+            <point key="canvasLocation" x="1818" y="-1338"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Tdh-2r-sar">
@@ -480,20 +480,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Work in progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGL-t4-GGk">
-                                <rect key="frame" x="122" y="323" width="130" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="//TODO: retrieve and display chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGL-t4-GGk">
+                                <rect key="frame" x="60" y="323" width="255" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BGL-t4-GGk" firstAttribute="top" secondItem="HUQ-Gv-f5R" secondAttribute="bottom" constant="259" id="FZs-hm-oUX"/>
+                            <constraint firstAttribute="trailing" secondItem="BGL-t4-GGk" secondAttribute="trailing" constant="60" id="tCR-JF-F40"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyl-fy-ewu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2478" y="-591"/>
+            <point key="canvasLocation" x="1817" y="-637"/>
         </scene>
     </scenes>
     <resources>
