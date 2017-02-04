@@ -33,15 +33,12 @@ class RegistrationController: UIViewController,
             if response?.result.isSuccess == true {
                 print("Registration successful. Attempting to login")
                 self.networkClient.login(email: email, password: password, completion: { (response) in
-                    //TODO: segue to landing screen
-                    print("LOGGING IN")
-                    print(response as Any)
                     self.navigationController?.performSegue(withIdentifier: "landingSegue",
                                                             sender: self)
                 })
             } else {
                 //result is failure, re-enable register button
-                self.registrationView.enableRegisterButton()
+                self.registrationView.enableRegisterButton(enable: true)
             }
         }
     }

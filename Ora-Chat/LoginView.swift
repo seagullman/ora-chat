@@ -20,5 +20,10 @@ class LoginView: UIView {
         let password = self.passwordTextField.text ?? ""
         
         self.delegate?.login(email: email, password: password)
-    }    
+    }
+    
+    func resetTextFields() {
+        self.passwordTextField.text = ""
+        self.endEditing(true)
+    }
 }

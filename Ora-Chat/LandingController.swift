@@ -27,7 +27,8 @@ class LandingController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         self.landingView.delegate = self
-        
+        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
+        print("HEIGHT: \(navigationBarHeight)")
         networkClient.getChats { (chats) in
             print("LandingController chats response count: \(chats.count)")
             self.landingView.displayViewModel(viewModel: LandingViewModel(chats: chats))

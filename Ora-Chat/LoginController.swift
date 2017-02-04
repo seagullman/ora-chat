@@ -27,7 +27,11 @@ class LoginController: UIViewController,
         super.viewDidLoad()
         self.hideKeyboardOnTap()
     }
-    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loginView.resetTextFields()
+    }
     func login(email: String, password: String) {
         self.networkClient.login(email: email, password: password) { (response) in
             if response?.result.isSuccess == true {

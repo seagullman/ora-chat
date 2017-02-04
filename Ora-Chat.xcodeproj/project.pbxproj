@@ -26,6 +26,7 @@
 		6106539D1E43DCD4003D8124 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6106539C1E43DCD4003D8124 /* ChatMessage.swift */; };
 		610653A11E44CE57003D8124 /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653A01E44CE57003D8124 /* LandingViewModel.swift */; };
 		610653A31E4529B3003D8124 /* chats_sample_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 610653A21E4529B3003D8124 /* chats_sample_data.json */; };
+		610653A71E459164003D8124 /* PasswordFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610653A61E459164003D8124 /* PasswordFieldValidator.swift */; };
 		61B0EC691E4297FF00D745DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0EC681E4297FF00D745DF /* AppDelegate.swift */; };
 		61B0EC6E1E4297FF00D745DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61B0EC6C1E4297FF00D745DF /* Main.storyboard */; };
 		61B0EC701E4297FF00D745DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61B0EC6F1E4297FF00D745DF /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		6106539C1E43DCD4003D8124 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		610653A01E44CE57003D8124 /* LandingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewModel.swift; sourceTree = "<group>"; };
 		610653A21E4529B3003D8124 /* chats_sample_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chats_sample_data.json; sourceTree = "<group>"; };
+		610653A61E459164003D8124 /* PasswordFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFieldValidator.swift; sourceTree = "<group>"; };
 		61B0EC651E4297FF00D745DF /* Ora-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ora-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B0EC681E4297FF00D745DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61B0EC6D1E4297FF00D745DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				61B0EC711E4297FF00D745DF /* LaunchScreen.storyboard */,
 				61B0EC741E4297FF00D745DF /* Info.plist */,
 				610653941E43C7F3003D8124 /* Extensions.swift */,
+				610653A61E459164003D8124 /* PasswordFieldValidator.swift */,
 			);
 			path = "Ora-Chat";
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				610653931E43AE32003D8124 /* AccountViewModel.swift in Sources */,
 				610653911E43AB16003D8124 /* User.swift in Sources */,
 				610653A11E44CE57003D8124 /* LandingViewModel.swift in Sources */,
+				610653A71E459164003D8124 /* PasswordFieldValidator.swift in Sources */,
 				610653971E43D7EA003D8124 /* ChatsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
