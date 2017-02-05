@@ -10,9 +10,9 @@ import UIKit
 
 class ChatsTableViewCell: UITableViewCell {
     
-    @IBOutlet fileprivate weak var chatByLabel: UILabel!
-    @IBOutlet fileprivate weak var lastMessageByLabel: UILabel!
-    @IBOutlet fileprivate weak var lastMessageLabel: UILabel!
+    @IBOutlet private weak var chatByLabel: UILabel!
+    @IBOutlet private weak var lastMessageByLabel: UILabel!
+    @IBOutlet private weak var lastMessageLabel: UILabel!
     
     func displayViewModel(viewModel: ChatsTableViewCellViewModel) {
         self.chatByLabel.text = viewModel.chatTitle

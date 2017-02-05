@@ -25,7 +25,7 @@ class LandingView: UIView {
     }
 }
 
-
+//MARK: UITableViewDelegate
 extension LandingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
@@ -38,14 +38,15 @@ extension LandingView: UITableViewDelegate {
     }
 }
 
+//MARK: UITableViewDataSource
 extension LandingView: UITableViewDataSource {
-
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatsCell", for: indexPath) as! ChatsTableViewCell
-        let cellViewModel = ChatsTableViewCellViewModel(chat: (self.viewModel?.chats[indexPath.row])!)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatsCell",
+                                                 for: indexPath) as! ChatsTableViewCell
+        let cellViewModel = ChatsTableViewCellViewModel(
+            chat: (self.viewModel?.chats[indexPath.row])!)
         cell.displayViewModel(viewModel: cellViewModel)
         return cell
-        
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

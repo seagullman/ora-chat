@@ -28,7 +28,7 @@ class ChatsTableViewCellViewModel {
         return self.chat.last_chat_message?.message ?? ""
     }
     
-    fileprivate var elapsedTimeSinceMessage: String {
+    private var elapsedTimeSinceMessage: String {
         //TODO: calculate difference between self.chat.last_chat_message.created_at and the current time
         return "2 hours"
     }

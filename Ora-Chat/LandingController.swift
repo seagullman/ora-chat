@@ -15,9 +15,9 @@ protocol LandingDelegate: class {
 class LandingController: UIViewController,
                          LandingDelegate {
     
-    @IBOutlet fileprivate var landingView: LandingView!
+    @IBOutlet private var landingView: LandingView!
     
-    fileprivate let networkClient = NetworkClient()
+    private let networkClient = NetworkClient()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,15 +27,16 @@ class LandingController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         self.landingView.delegate = self
-        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
-        print("HEIGHT: \(navigationBarHeight)")
+        
         networkClient.getChats { (chats) in
             print("LandingController chats response count: \(chats.count)")
             self.landingView.displayViewModel(viewModel: LandingViewModel(chats: chats))
         }
     }
     
+    //MARK: LandingDelegate
     func didSelectChat(chatId: Int) {
-        self.performSegue(withIdentifier: "chatDetailSegue", sender: self)
+        self.performSegue(withIdentifier: "chatDetailSegue",
+                          sender: self)
     }
 }

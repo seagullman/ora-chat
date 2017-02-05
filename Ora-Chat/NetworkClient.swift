@@ -20,14 +20,14 @@ protocol NetworkInterface {
 
 class NetworkClient: NetworkInterface {
     
-    fileprivate let registerUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/users"
-    fileprivate let loginUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/login"
-    fileprivate let logoutUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/logout"
-    fileprivate let currentUserUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/users/current"
-    fileprivate let chatsUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/chats?page=1&limit=50"
+    private let registerUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/users"
+    private let loginUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/login"
+    private let logoutUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/auth/logout"
+    private let currentUserUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/users/current"
+    private let chatsUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/chats?page=1&limit=50"
     
-    fileprivate let authTokenKey = "auth-token"
-    fileprivate let content_type = "application/json; charset=UTF-8"
+    private let authTokenKey = "auth-token"
+    private let content_type = "application/json; charset=UTF-8"
 
     func registerUser(name: String,
                       email: String,
@@ -125,7 +125,6 @@ class NetworkClient: NetworkInterface {
         }, header: self.authHeader())
     }
     
-    //TODO: refactor this into a single 'request' function?
     //MARK: Private functions
     private func post(url: String,
                       params: [String: Any],

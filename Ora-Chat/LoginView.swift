@@ -11,12 +11,11 @@ import UIKit
 class LoginView: UIView,
                  UITextFieldValidatorDelegate {
 
-    @IBOutlet fileprivate weak var emailTextField: UITextField!
-    @IBOutlet fileprivate weak var passwordTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var loginButton: UIButton!
     
-    @IBOutlet fileprivate weak var loginButton: UIButton!
     var delegate: LoginDelegate?
-    
     var textFieldDelegate: UITextFieldValidator?
     
     override func awakeFromNib() {
@@ -30,7 +29,6 @@ class LoginView: UIView,
     @IBAction func login() {
         let email = self.emailTextField.text ?? ""
         let password = self.passwordTextField.text ?? ""
-        
         self.delegate?.login(email: email, password: password)
     }
     
@@ -40,6 +38,7 @@ class LoginView: UIView,
         self.allFieldsEntered(validated: false)
     }
     
+    //MARK: UITextFieldValidatorDelegate
     func allFieldsEntered(validated: Bool) {
         self.loginButton.isEnabled = validated
         let alpha: CGFloat = validated ? 1.0 : 0.4

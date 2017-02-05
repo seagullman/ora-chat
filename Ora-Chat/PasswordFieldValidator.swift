@@ -12,6 +12,10 @@ protocol PasswordFieldValidatorDelegate: class {
     func passwordFieldsValidated(success: Bool)
 }
 
+/**
+ * This class is used to validate that two (password) UITextFields contain the same values.
+ * The PasswordFieldValidatorDelegate is notified upon each keystroke whether or not the values match.
+ */
 class PasswordFieldValidator: NSObject,
                               UITextFieldDelegate {
     
@@ -29,14 +33,14 @@ class PasswordFieldValidator: NSObject,
         super.init()
         
         self.passwordField.addTarget(self,
-                                     action:#selector(PasswordFieldValidator.textChanged),
+                                     action:#selector(PasswordFieldValidator.validateFields),
                                      for:UIControlEvents.editingChanged)
         self.confirmationTextField.addTarget(self,
-                                             action:#selector(PasswordFieldValidator.textChanged),
+                                             action:#selector(PasswordFieldValidator.validateFields),
                                              for:UIControlEvents.editingChanged)
     }
     
-    func textChanged() {
+    func validateFields() {
         var a = false
         var b = false
         

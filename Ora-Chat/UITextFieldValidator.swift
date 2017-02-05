@@ -11,7 +11,10 @@ protocol UITextFieldValidatorDelegate {
 }
 
 import UIKit
-
+/**
+ *  This class takes in an array of UITextFields and notifies 
+ *   the delegate when non-empty values have been entered for each UITextField.
+ */
 class UITextFieldValidator: NSObject,
                             UITextFieldDelegate {
     
@@ -26,11 +29,13 @@ class UITextFieldValidator: NSObject,
         super.init()
         
         self.textFields.forEach({ (field) in
-            field.addTarget(self, action:#selector(PasswordFieldValidator.textChanged), for:UIControlEvents.editingChanged)
+            field.addTarget(self,
+                            action:#selector(UITextFieldValidator.validateFields),
+                            for:UIControlEvents.editingChanged)
         })
     }
     
-    func textChanged() {
+    func validateFields() {
         var fieldsValidated: Bool = false
         
         for field in self.textFields {

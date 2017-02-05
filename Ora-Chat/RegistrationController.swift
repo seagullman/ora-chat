@@ -15,7 +15,7 @@ protocol RegistrationDelegate: class {
 class RegistrationController: UIViewController,
                               RegistrationDelegate {
     
-    @IBOutlet fileprivate var registrationView: RegistrationView! {
+    @IBOutlet private var registrationView: RegistrationView! {
         didSet {
             self.registrationView.delegate = self
         }
@@ -28,11 +28,14 @@ class RegistrationController: UIViewController,
         self.hideKeyboardOnTap()
     }
     
+    //MARK: RegistrationDelegate
     func register(name: String, email: String, password: String) {
         networkClient.registerUser(name: name, email: email, password: password) { (response) in
             if response?.result.isSuccess == true {
                 print("Registration successful. Attempting to login")
-                self.networkClient.login(email: email, password: password, completion: { (response) in
+                self.networkClient.login(email: email,
+                                         password: password,
+                                         completion: { (response) in
                     self.navigationController?.performSegue(withIdentifier: "landingSegue",
                                                             sender: self)
                 })

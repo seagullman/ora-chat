@@ -15,7 +15,7 @@ protocol LoginDelegate {
 class LoginController: UIViewController,
                        LoginDelegate {
 
-    @IBOutlet fileprivate var loginView: LoginView! {
+    @IBOutlet private var loginView: LoginView! {
         didSet {
             self.loginView.delegate = self
         }
@@ -32,6 +32,8 @@ class LoginController: UIViewController,
         super.viewWillAppear(animated)
         self.loginView.resetTextFields()
     }
+    
+    //MARK: LoginDelegate
     func login(email: String, password: String) {
         self.networkClient.login(email: email, password: password) { (response) in
             if response?.result.isSuccess == true {

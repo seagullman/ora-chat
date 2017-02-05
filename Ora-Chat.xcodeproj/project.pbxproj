@@ -137,6 +137,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		610653AA1E46DE67003D8124 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				610653941E43C7F3003D8124 /* Extensions.swift */,
+				610653A61E459164003D8124 /* PasswordFieldValidator.swift */,
+				610653A81E4660C0003D8124 /* UITextFieldValidator.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		61B0EC5C1E4297FF00D745DF = {
 			isa = PBXGroup;
 			children = (
@@ -164,14 +174,12 @@
 				610653821E42AFC2003D8124 /* Service */,
 				6106537B1E42A742003D8124 /* Registration */,
 				610653751E429CF6003D8124 /* Login */,
+				610653AA1E46DE67003D8124 /* Common */,
 				61B0EC681E4297FF00D745DF /* AppDelegate.swift */,
 				61B0EC6C1E4297FF00D745DF /* Main.storyboard */,
 				61B0EC6F1E4297FF00D745DF /* Assets.xcassets */,
 				61B0EC711E4297FF00D745DF /* LaunchScreen.storyboard */,
 				61B0EC741E4297FF00D745DF /* Info.plist */,
-				610653941E43C7F3003D8124 /* Extensions.swift */,
-				610653A61E459164003D8124 /* PasswordFieldValidator.swift */,
-				610653A81E4660C0003D8124 /* UITextFieldValidator.swift */,
 			);
 			path = "Ora-Chat";
 			sourceTree = "<group>";

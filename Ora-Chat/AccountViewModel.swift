@@ -10,7 +10,7 @@ import Foundation
 
 class AccountViewModel: NSObject {
     
-    fileprivate let user: User
+    private let user: User
     
     init(user: User) {
         self.user = user

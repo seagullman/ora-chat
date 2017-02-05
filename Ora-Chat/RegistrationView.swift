@@ -11,11 +11,11 @@ import UIKit
 class RegistrationView: UIView,
                         PasswordFieldValidatorDelegate {
 
-    @IBOutlet fileprivate weak var nameTextField: UITextField!
-    @IBOutlet fileprivate weak var emailTextField: UITextField!
-    @IBOutlet fileprivate weak var passwordTextField: UITextField!
-    @IBOutlet fileprivate weak var confirmPasswordTextField: UITextField!
-    @IBOutlet fileprivate weak var registerButton: UIButton!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var confirmPasswordTextField: UITextField!
+    @IBOutlet private weak var registerButton: UIButton!
     
     var delegate: RegistrationDelegate?
     var textFieldDelegate: PasswordFieldValidator?
@@ -33,7 +33,6 @@ class RegistrationView: UIView,
         let name = nameTextField.text ?? ""
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        
         self.delegate?.register(name: name, email: email, password: password)
     }
     
@@ -47,11 +46,11 @@ class RegistrationView: UIView,
     
     func updateRegisterButtonFromValidation(enable: Bool) {
         self.registerButton.isEnabled = enable
-        
         let alpha: CGFloat = enable ? 1.0 : 0.4
         self.registerButton.alpha = alpha
     }
     
+    //MARK: PasswordFieldValidatorDelegate
     func passwordFieldsValidated(success: Bool) {
         self.updateRegisterButtonFromValidation(enable: success)
     }

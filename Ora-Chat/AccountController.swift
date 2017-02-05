@@ -17,7 +17,7 @@ protocol AccountDelegate: class {
 class AccountController: UIViewController,
                          AccountDelegate {
     
-    @IBOutlet fileprivate var accountView: AccountView! {
+    @IBOutlet private var accountView: AccountView! {
         didSet {
             self.accountView.delegate = self
         }
