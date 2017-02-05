@@ -12,7 +12,6 @@ A user can:
 Backlog:
 * Create a chat
 * Edit a chat
-* List all chats
 * View all messages in a chat
 * Create a message in a chat
 * On login and input fields, add ability to hit next button to go to next field, and login or done button to login or register
