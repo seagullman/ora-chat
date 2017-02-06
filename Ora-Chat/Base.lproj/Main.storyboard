@@ -479,22 +479,10 @@
                     <view key="view" contentMode="scaleToFill" id="Gmg-au-SON" customClass="ChatDetailView" customModule="Ora_Chat" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elj-BP-s3G">
-                                <rect key="frame" x="166" y="345" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Elj-BP-s3G" firstAttribute="centerY" secondItem="Gmg-au-SON" secondAttribute="centerY" id="ZR7-u0-N6a"/>
-                            <constraint firstItem="Elj-BP-s3G" firstAttribute="centerX" secondItem="Gmg-au-SON" secondAttribute="centerX" id="nTL-Bd-nt5"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="testLabel" destination="Elj-BP-s3G" id="PHF-Vg-GAv"/>
+                        <outlet property="chatDetailView" destination="Gmg-au-SON" id="Sco-Br-bOw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyl-fy-ewu" userLabel="First Responder" sceneMemberID="firstResponder"/>

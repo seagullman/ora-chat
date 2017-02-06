@@ -10,11 +10,13 @@ import UIKit
 
 class ChatDetailController: UIViewController {
 
+    @IBOutlet private var chatDetailView: ChatDetailView!
+    
     let networkClient = NetworkClient()
     var chatId: Int?
     
-    
     @IBOutlet weak var testLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.testLabel.text = "ChatID: \(chatId)"
