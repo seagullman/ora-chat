@@ -16,6 +16,7 @@ protocol NetworkInterface {
     func currentUser(completion: @escaping (User) -> Void)
     func updateUser(name: String, email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
     func getChats(completion: @escaping ([Chat]) -> Void)
+    func getChatMessagesFor(chatId: Int, page: Int?, limit: Int?, completion: @escaping ([ChatMessage]) -> Void)
 }
 
 class NetworkClient: NetworkInterface {
@@ -125,6 +126,31 @@ class NetworkClient: NetworkInterface {
         }, header: self.authHeader())
     }
     
+    func getChatMessagesFor(chatId: Int, page: Int?, limit: Int?, completion: @escaping ([ChatMessage]) -> Void) {
+        
+        let url = self.chatMessagesUrlFor(chatId: chatId, page: page, limit: limit)
+        
+        self.get(url: url, params: nil, completion: { (response) in
+            //TODO: parse chat objects
+            guard let data = response?.data else { return }
+            
+            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            print("PRINTING RESPONSE SUHH: \(json)")
+            
+            guard let rootJson = json as? [String: Any] else { return }
+            
+            let chatMessages = rootJson["data"] as? [AnyObject]
+            var allChatMessages: [ChatMessage] = []
+
+            chatMessages?.forEach({ (message) in
+                allChatMessages.append(ChatMessage(dict: message as! [String : AnyObject]))
+            })
+            completion(allChatMessages)
+            
+        }, header: self.authHeader())
+        
+    }
+    
     //MARK: Private functions
     private func post(url: String,
                       params: [String: Any],
@@ -181,6 +207,21 @@ class NetworkClient: NetworkInterface {
             "Authorization": authToken
         ]
         return header
+    }
+    
+    private func chatMessagesUrlFor(chatId: Int, page: Int?, limit: Int?) -> String {
+        var url = "https://private-93240c-oracodechallenge.apiary-mock.com/chats/\(chatId)/chat_messages"
+        
+        if let page = page {
+            url.append("?page=\(page)")
+        }
+        
+        if let limit = limit {
+            var limitParam = ""
+            limitParam = page == nil ? "?limit=\(limit)" : "&limit=\(limit)"
+            url.append(limitParam)
+        }
+        return url
     }
     
     /*

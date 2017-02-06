@@ -19,6 +19,8 @@ class LandingController: UIViewController,
     
     private let networkClient = NetworkClient()
     
+    private var selectedChatId: Int?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.navigationItem.hidesBackButton = true
@@ -34,8 +36,15 @@ class LandingController: UIViewController,
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ChatDetailController, let id = self.selectedChatId {
+            destination.chatId = id
+        }
+    }
+    
     //MARK: LandingDelegate
     func didSelectChat(chatId: Int) {
+        self.selectedChatId = chatId
         self.performSegue(withIdentifier: "chatDetailSegue",
                           sender: self)
     }

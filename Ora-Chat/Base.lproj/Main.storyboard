@@ -468,20 +468,20 @@
             </objects>
             <point key="canvasLocation" x="1818" y="-1338"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat Detail Controller-->
         <scene sceneID="Tdh-2r-sar">
             <objects>
-                <viewController id="tRc-zw-2W0" sceneMemberID="viewController">
+                <viewController id="tRc-zw-2W0" customClass="ChatDetailController" customModule="Ora_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HUQ-Gv-f5R"/>
                         <viewControllerLayoutGuide type="bottom" id="Mke-6s-19x"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Gmg-au-SON">
+                    <view key="view" contentMode="scaleToFill" id="Gmg-au-SON" customClass="ChatDetailView" customModule="Ora_Chat" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="//TODO: retrieve and display chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGL-t4-GGk">
-                                <rect key="frame" x="60" y="323" width="255" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elj-BP-s3G">
+                                <rect key="frame" x="166" y="345" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -489,10 +489,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BGL-t4-GGk" firstAttribute="top" secondItem="HUQ-Gv-f5R" secondAttribute="bottom" constant="259" id="FZs-hm-oUX"/>
-                            <constraint firstAttribute="trailing" secondItem="BGL-t4-GGk" secondAttribute="trailing" constant="60" id="tCR-JF-F40"/>
+                            <constraint firstItem="Elj-BP-s3G" firstAttribute="centerY" secondItem="Gmg-au-SON" secondAttribute="centerY" id="ZR7-u0-N6a"/>
+                            <constraint firstItem="Elj-BP-s3G" firstAttribute="centerX" secondItem="Gmg-au-SON" secondAttribute="centerX" id="nTL-Bd-nt5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="testLabel" destination="Elj-BP-s3G" id="PHF-Vg-GAv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyl-fy-ewu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
