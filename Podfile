@@ -8,5 +8,6 @@ target 'Ora-Chat' do
   # Pods for Ora-Chat
   pod 'Alamofire'
   pod 'SwiftKeychainWrapper'
+  pod 'SlackTextViewController'
 
 end

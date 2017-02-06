@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (4.3.0)
+  - SlackTextViewController (1.9.5)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - SlackTextViewController
   - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: ce54f301fe25070feee088467dfb8ee3a469211b
+PODFILE CHECKSUM: 1da9a9a11017966f3f36ffed5b530b63377eddfc
 
 COCOAPODS: 1.1.1

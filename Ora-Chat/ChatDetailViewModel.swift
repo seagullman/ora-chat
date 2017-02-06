@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ChatDetailViewModel {
+class ChatDetailViewModel: NSObject {
     
     let messages: [ChatMessage]
     
@@ -16,5 +16,6 @@ class ChatDetailViewModel {
         self.messages = messages.sorted(by: {
             ($0.created_at) > ($1.created_at)
         })
+        super.init()
     }
 }
