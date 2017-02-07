@@ -25,25 +25,18 @@ class ChatDetailController: SLKTextViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.registerPrefixes(forAutoCompletion: [""])
-        self.tableView?.register(UINib(nibName: "ChatDetailMessageTableViewCell", bundle: nil), forCellReuseIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier)
-//        self.tableView?.register(ChatDetailMessageTableViewCell.classForCoder(), forCellReuseIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier)
-        tableView?.rowHeight = UITableViewAutomaticDimension
-        tableView?.estimatedRowHeight = 50.0
-        isInverted = true
-        
+        self.configureTableView()
         guard let chatId = chatId else { return }
-        self.networkClient.getChatMessagesFor(chatId: chatId, page: 1, limit: 49) { (chatMessages) in
-            //TODO: display all chatmessages
+        self.networkClient.getChatMessagesFor(chatId: chatId,
+                                              page: 1,
+                                              limit: 49) { (chatMessages) in
             self.chatDetailViewModel = ChatDetailViewModel(messages: chatMessages)
-            print("COUNT OF CHAT MESSAGES : \(chatMessages.count)")
             self.tableView?.reloadData()
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count =  self.chatDetailViewModel?.messages.count ?? 0
-        print("COUNTTTT \(count)")
         return count
     }
     
@@ -57,5 +50,21 @@ class ChatDetailController: SLKTextViewController {
         cell.transform = tableView.transform
         
         return cell
+    }
+    
+    private func configureTableView() {
+        self.registerPrefixes(forAutoCompletion: [""])
+        self.tableView?.register(
+            UINib(nibName: "ChatDetailMessageTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier)
+        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.estimatedRowHeight = 50.0
+        isInverted = true
+
+    }
+    
+    override func didPressRightButton(_ sender: Any?) {
+        print("send button tapped")
     }
 }
