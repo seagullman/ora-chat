@@ -31,6 +31,8 @@ class NetworkClient: NetworkInterface {
     private let authTokenKey = "auth-token"
     private let currentUserIdKey = "current-user"
     private let content_type = "application/json; charset=UTF-8"
+    
+    private let useSampleDataSettingsKey = "use_sample_data"
 
     func registerUser(name: String,
                       email: String,
@@ -119,8 +121,17 @@ class NetworkClient: NetworkInterface {
                  completion: { (response) in
                     guard let data = response?.data else { return }
                     
+                    var json: NSDictionary?
+                    let defaults = UserDefaults.standard
+                    let useSampleData = defaults.bool(forKey: self.useSampleDataSettingsKey)
+                    
+                    if useSampleData {
+                        json = self.sampleChatsDataFor(file: "chats_sample_data")
+                    } else {
+                        json = try? JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
+                    }
                     //let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                    let json = self.sampleChatsDataFor(file: "chats_sample_data")
+//                    let json = self.sampleChatsDataFor(file: "chats_sample_data")
                     guard let rootJson = json as? [String: Any] else { return }
                     
                     let chats = rootJson["data"] as? [AnyObject]
@@ -141,13 +152,16 @@ class NetworkClient: NetworkInterface {
         self.get(url: url, params: nil, completion: { (response) in
             //TODO: parse chat objects
             guard let data = response?.data else { return }
+            var json: NSDictionary?
+            let defaults = UserDefaults.standard
+            let useSampleData = defaults.bool(forKey: self.useSampleDataSettingsKey)
             
-            //TODO: uncomment for live data
-            //let json = try? JSONSerialization.jsonObject(with: data, options: [])
-//            print("PRINTING RESPONSE SUHH: \(json)")
-            
-            let json = self.sampleChatsDataFor(file: "chat_detail_sample_data")
-            
+            if useSampleData {
+                json = self.sampleChatsDataFor(file: "chat_detail_sample_data")
+            } else {
+                json = try? JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
+            }
+
             guard let rootJson = json as? [String: Any] else { return }
             
             let chatMessages = rootJson["data"] as? [AnyObject]

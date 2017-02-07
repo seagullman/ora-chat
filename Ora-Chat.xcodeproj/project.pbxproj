@@ -35,6 +35,7 @@
 		617540311E4939BF00AFA6FF /* ChatDetailMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6175402F1E4939BF00AFA6FF /* ChatDetailMessageTableViewCell.xib */; };
 		617540331E49475800AFA6FF /* chat_detail_sample_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 617540321E49475800AFA6FF /* chat_detail_sample_data.json */; };
 		617540371E49884000AFA6FF /* ChatDetailSentMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 617540361E49884000AFA6FF /* ChatDetailSentMessageTableViewCell.xib */; };
+		6175403E1E4A4ED400AFA6FF /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6175403D1E4A4ED400AFA6FF /* Settings.bundle */; };
 		61B0EC691E4297FF00D745DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0EC681E4297FF00D745DF /* AppDelegate.swift */; };
 		61B0EC6E1E4297FF00D745DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61B0EC6C1E4297FF00D745DF /* Main.storyboard */; };
 		61B0EC701E4297FF00D745DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61B0EC6F1E4297FF00D745DF /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		6175402F1E4939BF00AFA6FF /* ChatDetailMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatDetailMessageTableViewCell.xib; sourceTree = "<group>"; };
 		617540321E49475800AFA6FF /* chat_detail_sample_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chat_detail_sample_data.json; sourceTree = "<group>"; };
 		617540361E49884000AFA6FF /* ChatDetailSentMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatDetailSentMessageTableViewCell.xib; sourceTree = "<group>"; };
+		6175403D1E4A4ED400AFA6FF /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		61B0EC651E4297FF00D745DF /* Ora-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ora-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B0EC681E4297FF00D745DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61B0EC6D1E4297FF00D745DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				61B0EC6F1E4297FF00D745DF /* Assets.xcassets */,
 				61B0EC711E4297FF00D745DF /* LaunchScreen.storyboard */,
 				61B0EC741E4297FF00D745DF /* Info.plist */,
+				6175403D1E4A4ED400AFA6FF /* Settings.bundle */,
 			);
 			path = "Ora-Chat";
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6175403E1E4A4ED400AFA6FF /* Settings.bundle in Resources */,
 				61B0EC731E4297FF00D745DF /* LaunchScreen.storyboard in Resources */,
 				61B0EC701E4297FF00D745DF /* Assets.xcassets in Resources */,
 				610653A31E4529B3003D8124 /* chats_sample_data.json in Resources */,
