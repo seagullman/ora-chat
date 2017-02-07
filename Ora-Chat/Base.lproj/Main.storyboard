@@ -213,7 +213,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatsCell" rowHeight="75" id="nFp-3j-29C" customClass="ChatsTableViewCell" customModule="Ora_Chat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatsCell" rowHeight="75" id="nFp-3j-29C" customClass="LandingTableViewCell" customModule="Ora_Chat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nFp-3j-29C" id="VeJ-1G-nCV">
@@ -260,9 +260,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="chatByLabel" destination="0Ao-4d-eOu" id="1i7-fZ-XIQ"/>
-                                            <outlet property="lastMessageByLabel" destination="fyI-5t-nFM" id="5VN-dB-vOn"/>
-                                            <outlet property="lastMessageLabel" destination="x4G-lO-fFN" id="fxP-8F-iCY"/>
+                                            <outlet property="chatByLabel" destination="0Ao-4d-eOu" id="RPQ-M8-Qaw"/>
+                                            <outlet property="lastMessageByLabel" destination="fyI-5t-nFM" id="umI-f0-tqe"/>
+                                            <outlet property="lastMessageLabel" destination="x4G-lO-fFN" id="31X-GR-h9i"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

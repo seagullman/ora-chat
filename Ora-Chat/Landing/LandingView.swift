@@ -42,8 +42,8 @@ extension LandingView: UITableViewDelegate {
 extension LandingView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatsCell",
-                                                 for: indexPath) as! ChatsTableViewCell
-        let cellViewModel = ChatsTableViewCellViewModel(
+                                                 for: indexPath) as! LandingTableViewCell
+        let cellViewModel = LandingTableViewCellViewModel(
             chat: (self.viewModel?.chats[indexPath.row])!)
         cell.displayViewModel(viewModel: cellViewModel)
         return cell

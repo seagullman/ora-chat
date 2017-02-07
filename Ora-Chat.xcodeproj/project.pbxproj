@@ -21,9 +21,9 @@
 		617540541E4A72CA00AFA6FF /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617540511E4A72CA00AFA6FF /* AccountController.swift */; };
 		617540551E4A72CA00AFA6FF /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617540521E4A72CA00AFA6FF /* AccountView.swift */; };
 		617540561E4A72CA00AFA6FF /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617540531E4A72CA00AFA6FF /* AccountViewModel.swift */; };
-		6175405D1E4A730700AFA6FF /* chats_sample_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 617540571E4A730700AFA6FF /* chats_sample_data.json */; };
-		6175405E1E4A730700AFA6FF /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617540581E4A730700AFA6FF /* ChatsTableViewCell.swift */; };
-		6175405F1E4A730700AFA6FF /* ChatsTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617540591E4A730700AFA6FF /* ChatsTableViewCellViewModel.swift */; };
+		6175405D1E4A730700AFA6FF /* landing_sample_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 617540571E4A730700AFA6FF /* landing_sample_data.json */; };
+		6175405E1E4A730700AFA6FF /* LandingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617540581E4A730700AFA6FF /* LandingTableViewCell.swift */; };
+		6175405F1E4A730700AFA6FF /* LandingTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617540591E4A730700AFA6FF /* LandingTableViewCellViewModel.swift */; };
 		617540601E4A730700AFA6FF /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6175405A1E4A730700AFA6FF /* LandingController.swift */; };
 		617540611E4A730700AFA6FF /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6175405B1E4A730700AFA6FF /* LandingView.swift */; };
 		617540621E4A730700AFA6FF /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6175405C1E4A730700AFA6FF /* LandingViewModel.swift */; };
@@ -56,9 +56,9 @@
 		617540511E4A72CA00AFA6FF /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountController.swift; path = Account/AccountController.swift; sourceTree = "<group>"; };
 		617540521E4A72CA00AFA6FF /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountView.swift; path = Account/AccountView.swift; sourceTree = "<group>"; };
 		617540531E4A72CA00AFA6FF /* AccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewModel.swift; path = Account/AccountViewModel.swift; sourceTree = "<group>"; };
-		617540571E4A730700AFA6FF /* chats_sample_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = chats_sample_data.json; path = Landing/chats_sample_data.json; sourceTree = "<group>"; };
-		617540581E4A730700AFA6FF /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatsTableViewCell.swift; path = Landing/ChatsTableViewCell.swift; sourceTree = "<group>"; };
-		617540591E4A730700AFA6FF /* ChatsTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatsTableViewCellViewModel.swift; path = Landing/ChatsTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		617540571E4A730700AFA6FF /* landing_sample_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = landing_sample_data.json; path = Landing/landing_sample_data.json; sourceTree = "<group>"; };
+		617540581E4A730700AFA6FF /* LandingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingTableViewCell.swift; path = Landing/LandingTableViewCell.swift; sourceTree = "<group>"; };
+		617540591E4A730700AFA6FF /* LandingTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingTableViewCellViewModel.swift; path = Landing/LandingTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		6175405A1E4A730700AFA6FF /* LandingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingController.swift; path = Landing/LandingController.swift; sourceTree = "<group>"; };
 		6175405B1E4A730700AFA6FF /* LandingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingView.swift; path = Landing/LandingView.swift; sourceTree = "<group>"; };
 		6175405C1E4A730700AFA6FF /* LandingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingViewModel.swift; path = Landing/LandingViewModel.swift; sourceTree = "<group>"; };
@@ -121,9 +121,9 @@
 		610653851E430034003D8124 /* Landing */ = {
 			isa = PBXGroup;
 			children = (
-				617540571E4A730700AFA6FF /* chats_sample_data.json */,
-				617540581E4A730700AFA6FF /* ChatsTableViewCell.swift */,
-				617540591E4A730700AFA6FF /* ChatsTableViewCellViewModel.swift */,
+				617540571E4A730700AFA6FF /* landing_sample_data.json */,
+				617540581E4A730700AFA6FF /* LandingTableViewCell.swift */,
+				617540591E4A730700AFA6FF /* LandingTableViewCellViewModel.swift */,
 				6175405A1E4A730700AFA6FF /* LandingController.swift */,
 				6175405B1E4A730700AFA6FF /* LandingView.swift */,
 				6175405C1E4A730700AFA6FF /* LandingViewModel.swift */,
@@ -296,7 +296,7 @@
 				6175403E1E4A4ED400AFA6FF /* Settings.bundle in Resources */,
 				61B0EC731E4297FF00D745DF /* LaunchScreen.storyboard in Resources */,
 				617540451E4A728E00AFA6FF /* chat_detail_sample_data.json in Resources */,
-				6175405D1E4A730700AFA6FF /* chats_sample_data.json in Resources */,
+				6175405D1E4A730700AFA6FF /* landing_sample_data.json in Resources */,
 				61B0EC701E4297FF00D745DF /* Assets.xcassets in Resources */,
 				617540491E4A728E00AFA6FF /* ChatDetailSentMessageTableViewCell.xib in Resources */,
 				617540481E4A728E00AFA6FF /* ChatDetailReceivedMessageTableViewCell.xib in Resources */,
@@ -370,13 +370,13 @@
 				6175404F1E4A72B100AFA6FF /* ChatMessage.swift in Sources */,
 				61B0EC691E4297FF00D745DF /* AppDelegate.swift in Sources */,
 				617540461E4A728E00AFA6FF /* ChatDetailController.swift in Sources */,
-				6175405F1E4A730700AFA6FF /* ChatsTableViewCellViewModel.swift in Sources */,
+				6175405F1E4A730700AFA6FF /* LandingTableViewCellViewModel.swift in Sources */,
 				6175406B1E4A736000AFA6FF /* LoginController.swift in Sources */,
 				617540621E4A730700AFA6FF /* LandingViewModel.swift in Sources */,
 				617540701E4A737A00AFA6FF /* Extensions.swift in Sources */,
 				617540561E4A72CA00AFA6FF /* AccountViewModel.swift in Sources */,
 				6175404A1E4A728E00AFA6FF /* ChatDetailViewModel.swift in Sources */,
-				6175405E1E4A730700AFA6FF /* ChatsTableViewCell.swift in Sources */,
+				6175405E1E4A730700AFA6FF /* LandingTableViewCell.swift in Sources */,
 				6175404E1E4A72B100AFA6FF /* Chat.swift in Sources */,
 				617540611E4A730700AFA6FF /* LandingView.swift in Sources */,
 				617540641E4A732900AFA6FF /* NetworkClient.swift in Sources */,

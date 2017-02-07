@@ -126,12 +126,11 @@ class NetworkClient: NetworkInterface {
                     let useSampleData = defaults.bool(forKey: self.useSampleDataSettingsKey)
                     
                     if useSampleData {
-                        json = self.sampleChatsDataFor(file: "chats_sample_data")
+                        json = self.sampleChatsDataFor(file: "landing_sample_data")
                     } else {
                         json = try? JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
                     }
-                    //let json = try? JSONSerialization.jsonObject(with: data, options: [])
-//                    let json = self.sampleChatsDataFor(file: "chats_sample_data")
+
                     guard let rootJson = json as? [String: Any] else { return }
                     
                     let chats = rootJson["data"] as? [AnyObject]

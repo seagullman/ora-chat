@@ -1,5 +1,5 @@
 //
-//  ChatsTableViewCellViewModel.swift
+//  LandingTableViewCellViewModel.swift
 //  Ora-Chat
 //
 //  Created by Brad Siegel on 2/2/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ChatsTableViewCellViewModel {
+class LandingTableViewCellViewModel {
     
     let chat: Chat
     
