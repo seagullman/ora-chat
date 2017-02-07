@@ -19,16 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy3-FQ-VW1">
-                        <rect key="frame" x="10" y="22" width="57.5" height="106"/>
+                        <rect key="frame" x="10" y="22" width="58" height="106"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvD-Ub-RVk">
-                                <rect key="frame" x="10" y="10" width="37.5" height="86"/>
+                                <rect key="frame" x="10" y="10" width="38" height="86"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hvD-Ub-RVk" firstAttribute="top" secondItem="iy3-FQ-VW1" secondAttribute="top" constant="10" id="CB7-St-RDD"/>
                             <constraint firstAttribute="trailing" secondItem="hvD-Ub-RVk" secondAttribute="trailing" constant="10" id="H9r-gr-Mri"/>
@@ -42,9 +42,19 @@
                         <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vb4-x2-580">
+                        <rect key="frame" x="10" y="116" width="20" height="12"/>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="0G1-Ap-6Vo"/>
+                            <constraint firstAttribute="height" constant="12" id="JaO-7z-UvU"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Vb4-x2-580" firstAttribute="leading" secondItem="ye6-XB-RPz" secondAttribute="leading" constant="10" id="3Zo-Gv-2Fy"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iy3-FQ-VW1" secondAttribute="trailing" constant="30" id="7PW-lY-XTi"/>
+                    <constraint firstItem="Vb4-x2-580" firstAttribute="bottom" secondItem="iy3-FQ-VW1" secondAttribute="bottom" id="E1r-3h-jVN"/>
                     <constraint firstItem="iy3-FQ-VW1" firstAttribute="leading" secondItem="ye6-XB-RPz" secondAttribute="leading" constant="10" id="RAz-8s-6CL"/>
                     <constraint firstItem="iy3-FQ-VW1" firstAttribute="top" secondItem="4Wb-3x-l3T" secondAttribute="bottom" id="V8T-b1-n1n"/>
                     <constraint firstItem="4Wb-3x-l3T" firstAttribute="top" secondItem="ye6-XB-RPz" secondAttribute="top" constant="10" id="aZl-ao-dqk"/>

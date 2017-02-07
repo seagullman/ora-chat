@@ -22,7 +22,7 @@ class ChatDetailMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageView: UIView!
     
     override func awakeFromNib() {
-        self.messageView.layer.cornerRadius = 10.0
+        self.messageView.layer.cornerRadius = 15.0
     }
     
     func displayViewModel(viewModel: ChatDetailCellViewModel) {

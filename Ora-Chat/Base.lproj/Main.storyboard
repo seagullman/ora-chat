@@ -468,7 +468,7 @@
             </objects>
             <point key="canvasLocation" x="1818" y="-1338"/>
         </scene>
-        <!--Chat Detail Controller-->
+        <!--Chat Name Here-->
         <scene sceneID="Tdh-2r-sar">
             <objects>
                 <viewController id="tRc-zw-2W0" customClass="ChatDetailController" customModule="Ora_Chat" customModuleProvider="target" sceneMemberID="viewController">
@@ -481,6 +481,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Chat Name Here" id="sgH-a4-0iX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyl-fy-ewu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
