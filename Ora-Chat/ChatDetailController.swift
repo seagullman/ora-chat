@@ -35,7 +35,7 @@ class ChatDetailController: SLKTextViewController {
     //MARK: UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let messageModelAtIndexPath = chatDetailViewModel?.messages[indexPath.row]
+        let messageModelAtIndexPath = chatDetailViewModel?.chatMessages[indexPath.row]
         
         var cell: ChatDetailMessageTableViewCell? = nil
         if messageModelAtIndexPath?.user_id == currentUserId {
@@ -68,7 +68,7 @@ class ChatDetailController: SLKTextViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count =  self.chatDetailViewModel?.messages.count ?? 0
+        let count =  self.chatDetailViewModel?.chatMessages.count ?? 0
         return count
     }
     
@@ -101,8 +101,10 @@ class ChatDetailController: SLKTextViewController {
     */
     override func didPressRightButton(_ sender: Any?) {
         guard let chatId = self.chatId, let messageText = self.textInputbar.textView.text else { return }
-        self.networkClient.createChatMessage(chatId: chatId, message: messageText) { (message) in
-            self.chatDetailViewModel?.messages.append(message)
+            self.networkClient.createChatMessage(chatId: chatId, message: messageText) { (message) in
+            self.chatDetailViewModel?.appendMessage(message: message)
+            //new messages will appear in the correct order with data coming back from the API 
+            //containing updated date_created  fields
             self.tableView?.reloadData()
             self.textInputbar.textView.text = ""
         }
