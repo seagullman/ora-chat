@@ -16,13 +16,16 @@ class ChatDetailController: SLKTextViewController {
     
     let networkClient = NetworkClient()
     var chatId: Int?
+    var chatName: String?
+    
     var chatDetailViewModel: ChatDetailViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
         
-        guard let chatId = chatId else { return }
+        guard let chatId = self.chatId, let chatName = self.chatName else { return }
+        self.navigationItem.title = chatName
         self.networkClient.getChatMessagesFor(chatId: chatId,
                                               page: 1,
                                               limit: 49) { (chatMessages) in
@@ -40,23 +43,25 @@ class ChatDetailController: SLKTextViewController {
         
         let messageModelAtIndexPath = chatDetailViewModel?.messages[indexPath.row]
         
+        var cell: ChatDetailMessageTableViewCell? = nil
         if messageModelAtIndexPath?.user_id == currentUserId {
             //current user posted message, show sent cell
+            cell = tableView.dequeueReusableCell(withIdentifier: ChatDetailMessageTableViewCell.sentReuseIdentifier, for: indexPath) as? ChatDetailMessageTableViewCell
         } else {
             //message was not posted by current user, show recieved cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier, for: indexPath) as! ChatDetailMessageTableViewCell
-            
-            let message = messageModelAtIndexPath?.message ?? ""
-            let date = messageModelAtIndexPath?.created_at ?? Date()
-            let viewModel = ChatDetailCellViewModel(
-                message: message,
-                date: date)
-            cell.displayViewModel(viewModel: viewModel)
-            cell.transform = tableView.transform
-            return cell
+            cell = tableView.dequeueReusableCell(withIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier, for: indexPath) as? ChatDetailMessageTableViewCell
         }
-
-        return UITableViewCell()
+        
+        guard let messageCell = cell else { return UITableViewCell() }
+        
+        let message = messageModelAtIndexPath?.message ?? ""
+        let date = messageModelAtIndexPath?.created_at ?? Date()
+        let viewModel = ChatDetailCellViewModel(
+            message: message,
+            date: date)
+        messageCell.displayViewModel(viewModel: viewModel)
+        messageCell.transform = tableView.transform
+        return messageCell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,11 +72,16 @@ class ChatDetailController: SLKTextViewController {
     //MARK: private functions
     private func configureTableView() {
         self.registerPrefixes(forAutoCompletion: [""])
+        self.tableView?.allowsSelection = false
         self.tableView?.separatorStyle = .none
         self.tableView?.register(
             UINib(nibName: "ChatDetailMessageTableViewCell",
                   bundle: nil),
             forCellReuseIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier)
+        self.tableView?.register(
+            UINib(nibName: "ChatDetailSentMessageTableViewCell",
+                  bundle: nil),
+            forCellReuseIdentifier: ChatDetailMessageTableViewCell.sentReuseIdentifier)
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.estimatedRowHeight = 50.0
         isInverted = true

@@ -33,7 +33,7 @@ extension LandingView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let chatId = self.viewModel?.chats[indexPath.row].id else { return }
-        self.delegate?.didSelectChat(chatId: chatId)
+        self.delegate?.didSelectChat(chatId: chatId, atIndex: indexPath.row)
         chatsTableView.deselectRow(at: indexPath, animated: false)
     }
 }

@@ -16,6 +16,7 @@ struct ChatDetailCellViewModel {
 class ChatDetailMessageTableViewCell: UITableViewCell {
 
     static let reuseIdentifier = "message_TableView_cell"
+    static let sentReuseIdentifier = "sent_message_TableView_cell"
     
     @IBOutlet weak var messageText: UILabel!
     @IBOutlet weak var messageDate: UILabel!

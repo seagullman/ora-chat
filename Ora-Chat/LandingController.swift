@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LandingDelegate: class {
-    func didSelectChat(chatId: Int)
+    func didSelectChat(chatId: Int, atIndex: Int)
 }
 
 class LandingController: UIViewController,
@@ -20,6 +20,8 @@ class LandingController: UIViewController,
     private let networkClient = NetworkClient()
     
     private var selectedChatId: Int?
+    private var selectedChatIndex: Int?
+    private var landingViewModel: LandingViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,20 +33,23 @@ class LandingController: UIViewController,
         self.landingView.delegate = self
         
         networkClient.getChats { (chats) in
-            print("LandingController chats response count: \(chats.count)")
-            self.landingView.displayViewModel(viewModel: LandingViewModel(chats: chats))
+            let viewModel = LandingViewModel(chats: chats)
+            self.landingViewModel = viewModel
+            self.landingView.displayViewModel(viewModel: viewModel)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? ChatDetailController, let id = self.selectedChatId {
+        if let destination = segue.destination as? ChatDetailController, let id = self.selectedChatId, let selectedIndex = self.selectedChatIndex,  let chatName = self.landingViewModel?.chats[selectedIndex].name {
             destination.chatId = id
+            destination.chatName = chatName
         }
     }
     
     //MARK: LandingDelegate
-    func didSelectChat(chatId: Int) {
+    func didSelectChat(chatId: Int, atIndex: Int) {
         self.selectedChatId = chatId
+        self.selectedChatIndex = atIndex
         self.performSegue(withIdentifier: "chatDetailSegue",
                           sender: self)
     }
