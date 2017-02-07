@@ -11,19 +11,17 @@ import SlackTextViewController
 import SwiftKeychainWrapper
 
 class ChatDetailController: SLKTextViewController {
-
-    @IBOutlet private var chatDetailView: ChatDetailView!
     
     let networkClient = NetworkClient()
     var chatId: Int?
     var chatName: String?
-    
+    var currentUserId: Int?
     var chatDetailViewModel: ChatDetailViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
-        
+         self.currentUserId = self.networkClient.currentUserId()
         guard let chatId = self.chatId, let chatName = self.chatName else { return }
         self.navigationItem.title = chatName
         self.networkClient.getChatMessagesFor(chatId: chatId,
@@ -36,10 +34,6 @@ class ChatDetailController: SLKTextViewController {
     
     //MARK: UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //TODO: look this over agian
-        let currentUserId = self.networkClient.currentUserId()
-        
         
         let messageModelAtIndexPath = chatDetailViewModel?.messages[indexPath.row]
         
@@ -56,9 +50,18 @@ class ChatDetailController: SLKTextViewController {
         
         let message = messageModelAtIndexPath?.message ?? ""
         let date = messageModelAtIndexPath?.created_at ?? Date()
+        let messageAuthor = messageModelAtIndexPath?.user.name ?? ""
+        
+        var isMessageByCurrentUser: Bool = false
+        if messageModelAtIndexPath?.user_id == self.currentUserId {
+            isMessageByCurrentUser = true
+        }
+        
         let viewModel = ChatDetailCellViewModel(
             message: message,
-            date: date)
+            date: date,
+            messageAuthor: messageAuthor,
+            isMessageByCurrentUser: isMessageByCurrentUser)
         messageCell.displayViewModel(viewModel: viewModel)
         messageCell.transform = tableView.transform
         return messageCell
@@ -75,7 +78,7 @@ class ChatDetailController: SLKTextViewController {
         self.tableView?.allowsSelection = false
         self.tableView?.separatorStyle = .none
         self.tableView?.register(
-            UINib(nibName: "ChatDetailMessageTableViewCell",
+            UINib(nibName: "ChatDetailReceivedMessageTableViewCell",
                   bundle: nil),
             forCellReuseIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier)
         self.tableView?.register(
@@ -99,7 +102,6 @@ class ChatDetailController: SLKTextViewController {
     override func didPressRightButton(_ sender: Any?) {
         guard let chatId = self.chatId, let messageText = self.textInputbar.textView.text else { return }
         self.networkClient.createChatMessage(chatId: chatId, message: messageText) { (message) in
-            //TODO: add message to viewModel array and reload table
             self.chatDetailViewModel?.messages.append(message)
             self.tableView?.reloadData()
             self.textInputbar.textView.text = ""

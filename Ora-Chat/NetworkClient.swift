@@ -150,7 +150,6 @@ class NetworkClient: NetworkInterface {
         let url = self.chatMessagesUrlFor(chatId: chatId, page: page, limit: limit)
         
         self.get(url: url, params: nil, completion: { (response) in
-            //TODO: parse chat objects
             guard let data = response?.data else { return }
             var json: NSDictionary?
             let defaults = UserDefaults.standard

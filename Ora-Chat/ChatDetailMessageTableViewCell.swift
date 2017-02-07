@@ -11,6 +11,8 @@ import UIKit
 struct ChatDetailCellViewModel {
     let message: String
     let date: Date
+    let messageAuthor: String
+    let isMessageByCurrentUser: Bool
 }
 
 class ChatDetailMessageTableViewCell: UITableViewCell {
@@ -28,6 +30,11 @@ class ChatDetailMessageTableViewCell: UITableViewCell {
     
     func displayViewModel(viewModel: ChatDetailCellViewModel) {
         self.messageText.text = viewModel.message
-        self.messageDate.text = viewModel.date.formattedDate()
+        if viewModel.isMessageByCurrentUser {
+            self.messageDate.text = viewModel.date.formattedDate()
+        } else {
+            //message was not sent by current user, add user's name to field
+            self.messageDate.text = "\(viewModel.messageAuthor) - \(viewModel.date.formattedDate())"
+        }
     }
 }
