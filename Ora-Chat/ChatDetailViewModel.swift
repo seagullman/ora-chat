@@ -10,7 +10,7 @@ import Foundation
 
 class ChatDetailViewModel: NSObject {
     
-    let messages: [ChatMessage]
+    var messages: [ChatMessage]
     
     init(messages: [ChatMessage]) {
         self.messages = messages.sorted(by: {

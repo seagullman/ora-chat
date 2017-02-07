@@ -40,7 +40,10 @@ class LandingController: UIViewController,
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? ChatDetailController, let id = self.selectedChatId, let selectedIndex = self.selectedChatIndex,  let chatName = self.landingViewModel?.chats[selectedIndex].name {
+        if let destination = segue.destination as? ChatDetailController,
+            let id = self.selectedChatId,
+            let selectedIndex = self.selectedChatIndex,
+            let chatName = self.landingViewModel?.chats[selectedIndex].name {
             destination.chatId = id
             destination.chatName = chatName
         }

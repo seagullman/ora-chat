@@ -93,8 +93,16 @@ class ChatDetailController: SLKTextViewController {
         return .plain
     }
     
+    /***
+    *   Called when the user taps the 'send' button after typing a message in a chat
+    */
     override func didPressRightButton(_ sender: Any?) {
-        print("send button tapped")
-        //TODO: kickoff service call to create message
+        guard let chatId = self.chatId, let messageText = self.textInputbar.textView.text else { return }
+        self.networkClient.createChatMessage(chatId: chatId, message: messageText) { (message) in
+            //TODO: add message to viewModel array and reload table
+            self.chatDetailViewModel?.messages.append(message)
+            self.tableView?.reloadData()
+            self.textInputbar.textView.text = ""
+        }
     }
 }

@@ -17,6 +17,7 @@ protocol NetworkInterface {
     func updateUser(name: String, email: String, password: String, completion: @escaping (DataResponse<Any>?) -> Void)
     func getChats(completion: @escaping ([Chat]) -> Void)
     func getChatMessagesFor(chatId: Int, page: Int?, limit: Int?, completion: @escaping ([ChatMessage]) -> Void)
+    func createChatMessage(chatId: Int, message: String, completion: @escaping (ChatMessage) -> Void)
 }
 
 class NetworkClient: NetworkInterface {
@@ -161,6 +162,21 @@ class NetworkClient: NetworkInterface {
         
     }
     
+    func createChatMessage(chatId: Int, message: String, completion: @escaping (ChatMessage) -> Void) {
+        
+        let params = [
+            "message": message,
+        ]
+        
+        self.post(url: self.createChatMessageUrl(chatId: chatId),
+                  params: params,
+                  completion: { (response) in
+                    let responseDictionary = response?.result.value as! [String: AnyObject]
+                    let newMessage = ChatMessage(dict: responseDictionary["data"] as! [String : AnyObject])
+                    completion(newMessage)
+        }, header: self.authHeader())
+    }
+    
     func currentUserId() -> Int? {
         return KeychainWrapper.standard.integer(forKey: self.currentUserIdKey)
     }
@@ -236,6 +252,10 @@ class NetworkClient: NetworkInterface {
             url.append(limitParam)
         }
         return url
+    }
+    
+    private func createChatMessageUrl(chatId: Int) -> String {
+        return "https://private-93240c-oracodechallenge.apiary-mock.com/chats/\(chatId)/chat_messages"
     }
     
     /*
