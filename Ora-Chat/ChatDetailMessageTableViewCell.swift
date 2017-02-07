@@ -19,6 +19,11 @@ class ChatDetailMessageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var messageText: UILabel!
     @IBOutlet weak var messageDate: UILabel!
+    @IBOutlet weak var messageView: UIView!
+    
+    override func awakeFromNib() {
+        self.messageView.layer.cornerRadius = 10.0
+    }
     
     func displayViewModel(viewModel: ChatDetailCellViewModel) {
         self.messageText.text = viewModel.message
