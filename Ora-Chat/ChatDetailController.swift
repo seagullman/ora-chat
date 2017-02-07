@@ -17,12 +17,6 @@ class ChatDetailController: SLKTextViewController {
     var chatId: Int?
     var chatDetailViewModel: ChatDetailViewModel?
     
-    @IBOutlet weak var testLabel: UILabel!
-    
-    override class func tableViewStyle(for decoder: NSCoder) -> UITableViewStyle {
-        return .plain
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
@@ -35,25 +29,31 @@ class ChatDetailController: SLKTextViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count =  self.chatDetailViewModel?.messages.count ?? 0
-        return count
-    }
-    
+    //MARK: UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier, for: indexPath) as! ChatDetailMessageTableViewCell
 
         let messageModelAtIndexPath = chatDetailViewModel?.messages[indexPath.row]
         
-        cell.messageText.text = messageModelAtIndexPath?.message
-        cell.messageDate.text = "\(messageModelAtIndexPath?.created_at)"
+        let message = messageModelAtIndexPath?.message ?? ""
+        let date = messageModelAtIndexPath?.created_at ?? Date()
+        let viewModel = ChatDetailCellViewModel(
+            message: message,
+            date: date)
+        cell.displayViewModel(viewModel: viewModel)
         cell.transform = tableView.transform
-        
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count =  self.chatDetailViewModel?.messages.count ?? 0
+        return count
+    }
+    
+    //MARK: private functions
     private func configureTableView() {
         self.registerPrefixes(forAutoCompletion: [""])
+        self.tableView?.separatorStyle = .none
         self.tableView?.register(
             UINib(nibName: "ChatDetailMessageTableViewCell",
                   bundle: nil),
@@ -64,7 +64,13 @@ class ChatDetailController: SLKTextViewController {
 
     }
     
+    //MARK: overridden SLKTextViewController functions
+    override class func tableViewStyle(for decoder: NSCoder) -> UITableViewStyle {
+        return .plain
+    }
+    
     override func didPressRightButton(_ sender: Any?) {
         print("send button tapped")
+        //TODO: kickoff service call to create message
     }
 }

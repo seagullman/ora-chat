@@ -26,4 +26,19 @@ extension Date {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
         return dateFormatter.date(from: dateString) ?? Date()
     }
+    
+    func formattedDate() -> String {
+        let dateFormate = DateFormatter()
+        dateFormate.dateFormat = "MMM d, H:mm a"
+        return dateFormate.string(from: self)
+    }
+    
+    func formattedTimeSinceNow() -> String? {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.day, .hour, .minute]
+        formatter.unitsStyle = .abbreviated
+        let string = formatter.string(from: self,
+                                      to: Date())
+        return string
+    }
 }

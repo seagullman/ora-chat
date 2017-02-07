@@ -21,7 +21,7 @@ class ChatsTableViewCellViewModel {
     }
     
     var senderText: String {
-        return "\(self.chat.last_chat_message!.user.name) - \(self.elapsedTimeSinceMessage) ago"
+        return "\(self.chat.last_chat_message!.user.name) - \(self.elapsedTimeSinceMessage)"
     }
     
     var lastMessageText: String {
@@ -29,7 +29,9 @@ class ChatsTableViewCellViewModel {
     }
     
     private var elapsedTimeSinceMessage: String {
-        //TODO: calculate difference between self.chat.last_chat_message.created_at and the current time
-        return "2 hours"
+        let fromDate = self.chat.last_chat_message?.created_at ?? Date()
+        let elapsedTime = fromDate.formattedTimeSinceNow() ?? ""
+        
+        return "\(elapsedTime) ago"
     }
 }

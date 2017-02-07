@@ -111,8 +111,8 @@ class NetworkClient: NetworkInterface {
                  completion: { (response) in
                     guard let data = response?.data else { return }
                     
-                    let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                    
+                    //let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                    let json = self.sampleChatsDataFor(file: "chats_sample_data")
                     guard let rootJson = json as? [String: Any] else { return }
                     
                     let chats = rootJson["data"] as? [AnyObject]
@@ -134,8 +134,10 @@ class NetworkClient: NetworkInterface {
             //TODO: parse chat objects
             guard let data = response?.data else { return }
             
-            let json = try? JSONSerialization.jsonObject(with: data, options: [])
-            print("PRINTING RESPONSE SUHH: \(json)")
+            //let json = try? JSONSerialization.jsonObject(with: data, options: [])
+//            print("PRINTING RESPONSE SUHH: \(json)")
+            
+            let json = self.sampleChatsDataFor(file: "chat_detail_sample_data")
             
             guard let rootJson = json as? [String: Any] else { return }
             
@@ -227,8 +229,8 @@ class NetworkClient: NetworkInterface {
     /*
      * Use for testing
      */
-    func sampleChatsData() -> NSDictionary? {
-        if let path = Bundle.main.path(forResource: "chats_sample_data", ofType: "json") {
+    func sampleChatsDataFor(file: String) -> NSDictionary? {
+        if let path = Bundle.main.path(forResource: file, ofType: "json") {
             do {
                 let jsonData = try NSData(contentsOfFile: path, options: NSData.ReadingOptions.mappedIfSafe)
                 do {
