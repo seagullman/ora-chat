@@ -28,6 +28,7 @@ class NetworkClient: NetworkInterface {
     private let chatsUrl = "https://private-93240c-oracodechallenge.apiary-mock.com/chats?page=1&limit=50"
     
     private let authTokenKey = "auth-token"
+    private let currentUserIdKey = "current-user"
     private let content_type = "application/json; charset=UTF-8"
 
     func registerUser(name: String,
@@ -64,6 +65,11 @@ class NetworkClient: NetworkInterface {
             //Store auth token in Keychain 
             let token = response?.response?.allHeaderFields["Authorization"] as? String ?? ""
             _ = KeychainWrapper.standard.set(token, forKey: self.authTokenKey)
+                    print("LOGIN DATA: \(response?.result.value)")
+                    let responseDictionary = response?.result.value as! [String: AnyObject]
+                    let data = responseDictionary["data"] as! [String: AnyObject]
+                    let currentUserId = data["id"] as! Int
+             _ = KeychainWrapper.standard.set(currentUserId, forKey: self.currentUserIdKey)
                     
             completion(response)
         }, header: nil)
@@ -76,6 +82,7 @@ class NetworkClient: NetworkInterface {
                     if response?.result.isSuccess == true {
                         //logout successful, invalidate auth token
                         _ = KeychainWrapper.standard.removeObject(forKey: self.authTokenKey)
+                        _ = KeychainWrapper.standard.removeObject(forKey: self.currentUserIdKey)
                     }
             completion(response)
         }, header: self.authHeader())
@@ -134,6 +141,7 @@ class NetworkClient: NetworkInterface {
             //TODO: parse chat objects
             guard let data = response?.data else { return }
             
+            //TODO: uncomment for live data
             //let json = try? JSONSerialization.jsonObject(with: data, options: [])
 //            print("PRINTING RESPONSE SUHH: \(json)")
             
@@ -151,6 +159,10 @@ class NetworkClient: NetworkInterface {
             
         }, header: self.authHeader())
         
+    }
+    
+    func currentUserId() -> Int? {
+        return KeychainWrapper.standard.integer(forKey: self.currentUserIdKey)
     }
     
     //MARK: Private functions

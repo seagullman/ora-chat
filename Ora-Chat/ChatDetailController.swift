@@ -8,6 +8,7 @@
 
 import UIKit
 import SlackTextViewController
+import SwiftKeychainWrapper
 
 class ChatDetailController: SLKTextViewController {
 
@@ -20,6 +21,7 @@ class ChatDetailController: SLKTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
+        
         guard let chatId = chatId else { return }
         self.networkClient.getChatMessagesFor(chatId: chatId,
                                               page: 1,
@@ -31,18 +33,30 @@ class ChatDetailController: SLKTextViewController {
     
     //MARK: UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier, for: indexPath) as! ChatDetailMessageTableViewCell
-
+        
+        //TODO: look this over agian
+        let currentUserId = self.networkClient.currentUserId()
+        
+        
         let messageModelAtIndexPath = chatDetailViewModel?.messages[indexPath.row]
         
-        let message = messageModelAtIndexPath?.message ?? ""
-        let date = messageModelAtIndexPath?.created_at ?? Date()
-        let viewModel = ChatDetailCellViewModel(
-            message: message,
-            date: date)
-        cell.displayViewModel(viewModel: viewModel)
-        cell.transform = tableView.transform
-        return cell
+        if messageModelAtIndexPath?.user_id == currentUserId {
+            //current user posted message, show sent cell
+        } else {
+            //message was not posted by current user, show recieved cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChatDetailMessageTableViewCell.reuseIdentifier, for: indexPath) as! ChatDetailMessageTableViewCell
+            
+            let message = messageModelAtIndexPath?.message ?? ""
+            let date = messageModelAtIndexPath?.created_at ?? Date()
+            let viewModel = ChatDetailCellViewModel(
+                message: message,
+                date: date)
+            cell.displayViewModel(viewModel: viewModel)
+            cell.transform = tableView.transform
+            return cell
+        }
+
+        return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
